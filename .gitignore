@@ -1,8 +1,9 @@
 # binary files #
 ################
 _classes/
-classes
+classes/
 bin/
+target/
 *.class
 *.jar
 
