@@ -1,0 +1,11 @@
+# binary files #
+################
+_classes/
+classes
+bin/
+*.class
+*.jar
+
+# OS Files #
+############
+.DS_Store
