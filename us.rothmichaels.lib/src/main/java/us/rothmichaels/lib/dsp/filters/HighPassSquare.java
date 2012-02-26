@@ -13,7 +13,7 @@ import us.rothmichaels.lib.dsp.ABufferProcess;
  * @author Roth Michaels (<i><a href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
  *
  */
-public class SimpleHighPass extends ABufferProcess {
+public class HighPassSquare extends ABufferProcess {
 	
 	final float coefA;
 	final float coefB;
@@ -22,7 +22,7 @@ public class SimpleHighPass extends ABufferProcess {
 	 * @param coefA
 	 * @param coefB
 	 */
-	public SimpleHighPass(float coefA, float coefB) {
+	public HighPassSquare(float coefA, float coefB) {
 		this.coefA = coefA;
 		this.coefB = coefB;
 	}
