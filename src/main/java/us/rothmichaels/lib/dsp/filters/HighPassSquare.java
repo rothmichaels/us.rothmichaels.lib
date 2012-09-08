@@ -13,7 +13,7 @@ import us.rothmichaels.lib.dsp.ABufferProcess;
  * @author Roth Michaels (<i><a href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
  *
  */
-public class HighPassSquare extends ABufferProcess {
+public class HighPassSquare extends ABufferProcess implements IFilter {
 	
 	final float coefA;
 	final float coefB;
