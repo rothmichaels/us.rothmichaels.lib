@@ -22,11 +22,6 @@ public class SimpleEnvelopeAnalyzer extends ABufferProcess {
 		this.filterCoef = filterCoef;
 	}
 	
-	@Deprecated
-	private SimpleEnvelopeAnalyzer() {
-		throw new AssertionError();
-	}
-	
 	@Override
 	public void processInPlace(final float[] inputOutput) {
 		float feedback = 0f;
