@@ -1,37 +1,37 @@
 /*
- * ICharList.java
+ * IIntList.java
  *
  * Sep 9, 2012 
  */
-package lists;
+package us.rothmichaels.lib.lists;
 
 import java.util.Collection;
 
 /**
- * An interface for Lists of primative chars.
+ * An interface for Lists of primative integers.
  * 
  * @see java.lang.List
  * 
  * @author Roth Michaels (<i><a
  *		   href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
  */
-public interface IPrimativeCharList {
+public interface IPrimativeIntList {
 
 	/**
-	 * Appends an char to the end of the list.
+	 * Appends an integer to the end of the list.
 	 *
-	 * @param e char to append to the list
+	 * @param e integer to append to the list
 	 *
 	 * @return {@code true} (as specified by {@link Collection#add})
 	 */
-	boolean add(char e);
+	boolean add(int e);
 
 	/**
 	 * 
 	 * @param index
 	 * @param element
 	 */
-	void add(int index, char element);
+	void add(int index, int element);
 
 	/**
 	 * Appends the specified collection to the list.
@@ -40,7 +40,7 @@ public interface IPrimativeCharList {
 	 *
 	 * @return {@code true} if list was modified as a result of the call
 	 */
-	boolean addAll(Collection<Character> c);
+	boolean addAll(Collection<Integer> c);
 
 	/**
 	 * Insert the elements in the specified collection into
@@ -51,7 +51,7 @@ public interface IPrimativeCharList {
 	 * 
 	 * @return {@code true} if list was modified as a result of the call
 	 */
-	boolean addAll(int index, Collection<Character> c);
+	boolean addAll(int index, Collection<Integer> c);
 
 	/**
 	 * Appends the specified list to the list.
@@ -60,7 +60,7 @@ public interface IPrimativeCharList {
 	 *
 	 * @return {@code true} if list was modified as a result of the call
 	 */
-	boolean addAll(IPrimativeCharList l);
+	boolean addAll(IPrimativeIntList l);
 
 	/**
 	 * Insert the elements in the specified input into
@@ -71,7 +71,7 @@ public interface IPrimativeCharList {
 	 * 
 	 * @return {@code true} if list was modified as a result of the call
 	 */
-	boolean addAll(int index, IPrimativeCharList l);
+	boolean addAll(int index, IPrimativeIntList l);
 
 	/**
 	 * Removes all elements from the list.
@@ -79,13 +79,13 @@ public interface IPrimativeCharList {
 	void clear();
 
 	/**
-	 * Returns true if the list contains the specified char.
+	 * Returns true if the list contains the specified integer.
 	 * 
 	 * @param value		value to test presence in list
 	 * 
 	 * @return			{@code true} if {@code value} is in list.
 	 */
-	boolean contains(char value);
+	boolean contains(int value);
 
 	/**
 	 * Returns true if list contains all the elements of the specified
@@ -95,7 +95,7 @@ public interface IPrimativeCharList {
 	 *
 	 * @return {@code true} if list contained all members of input collection
 	 */
-	boolean containsAll(Collection<Character> c);
+	boolean containsAll(Collection<Integer> c);
 
 	/**
 	 * Returns true if list contains all the elements of the specified
@@ -105,7 +105,7 @@ public interface IPrimativeCharList {
 	 *
 	 * @return {@code true} if list contained all members of input list
 	 */
-	boolean containsAll(IPrimativeCharList c);
+	boolean containsAll(IPrimativeIntList c);
 
 	/**
 	 * Returns the element at the specified index.
@@ -114,7 +114,7 @@ public interface IPrimativeCharList {
 	 *
 	 * @return the element at {@code index}
 	 */
-	char get(int index);
+	int get(int index);
 
 	/**
 	 * Returns the index of the first occurrence of the specified value
@@ -124,7 +124,7 @@ public interface IPrimativeCharList {
 	 *
 	 * @return index of first occurance of {@code i}
 	 */
-	int indexOf(char i);
+	int indexOf(int i);
 
 	/**
 	 * Returns {@code true} if empty.
@@ -141,7 +141,7 @@ public interface IPrimativeCharList {
 	 *
 	 * @return index of last occurance of {@code i}
 	 */
-	int lastIndexOf(char value);
+	int lastIndexOf(int value);
 
 	/**
 	 * Removes the first occurance of {@code value} in the list.
@@ -150,7 +150,7 @@ public interface IPrimativeCharList {
 	 *
 	 * @return {@code true} if list was modified by this operation.
 	 */
-	boolean removeValue(char value);
+	int removeValue(int value);
 
 	/**
 	 * Remove the element at the specified index.
@@ -159,7 +159,7 @@ public interface IPrimativeCharList {
 	 *
 	 * @return {@code true} if list was modified by this operation.
 	 */
-	boolean remove(int index);
+	int remove(int index);
 
 	/**
 	 * 
@@ -184,7 +184,7 @@ public interface IPrimativeCharList {
 	 * 
 	 * @return the old value at index (null if no value).
 	 */
-	Character set(int index, char element);
+	Integer set(int index, int element);
 
 	/**
 	 * Returns the number of elements in this list. Does not overflow,
@@ -203,7 +203,7 @@ public interface IPrimativeCharList {
 	 *
 	 * @return the sublist
 	 */
-	IPrimativeCharList subList(int fromIndex, int toIndex);
+	IPrimativeIntList subList(int fromIndex, int toIndex);
 
 	/**
 	 * Returns an array containing all of the elements in this list in proper
@@ -216,7 +216,7 @@ public interface IPrimativeCharList {
 	 * @return an array containing all of the elements in this list in proper
 	 *		   sequence
 	 */
-	char[] toArray();
+	int[] toArray();
 
 	/**
 	 * Compares the specified object with this list for equality.

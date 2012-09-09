@@ -1,37 +1,37 @@
 /*
- * IFloatList.java
+ * IByteList.java
  *
  * Sep 9, 2012 
  */
-package lists;
+package us.rothmichaels.lib.lists;
 
 import java.util.Collection;
 
 /**
- * An interface for Lists of primative floats.
+ * An interface for Lists of primative bytes.
  * 
  * @see java.lang.List
  * 
  * @author Roth Michaels (<i><a
  *		   href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
  */
-public interface IPrimativeFloatList {
+public interface IPrimativeByteList {
 
 	/**
-	 * Appends an float to the end of the list.
+	 * Appends an byte to the end of the list.
 	 *
-	 * @param e float to append to the list
+	 * @param e byte to append to the list
 	 *
 	 * @return {@code true} (as specified by {@link Collection#add})
 	 */
-	boolean add(float e);
+	boolean add(byte e);
 
 	/**
 	 * 
 	 * @param index
 	 * @param element
 	 */
-	void add(int index, float element);
+	void add(int index, byte element);
 
 	/**
 	 * Appends the specified collection to the list.
@@ -40,7 +40,7 @@ public interface IPrimativeFloatList {
 	 *
 	 * @return {@code true} if list was modified as a result of the call
 	 */
-	boolean addAll(Collection<Float> c);
+	boolean addAll(Collection<Byte> c);
 
 	/**
 	 * Insert the elements in the specified collection into
@@ -51,7 +51,7 @@ public interface IPrimativeFloatList {
 	 * 
 	 * @return {@code true} if list was modified as a result of the call
 	 */
-	boolean addAll(int index, Collection<Float> c);
+	boolean addAll(int index, Collection<Byte> c);
 
 	/**
 	 * Appends the specified list to the list.
@@ -60,7 +60,7 @@ public interface IPrimativeFloatList {
 	 *
 	 * @return {@code true} if list was modified as a result of the call
 	 */
-	boolean addAll(IPrimativeFloatList l);
+	boolean addAll(IPrimativeByteList l);
 
 	/**
 	 * Insert the elements in the specified input into
@@ -71,7 +71,7 @@ public interface IPrimativeFloatList {
 	 * 
 	 * @return {@code true} if list was modified as a result of the call
 	 */
-	boolean addAll(int index, IPrimativeFloatList l);
+	boolean addAll(int index, IPrimativeByteList l);
 
 	/**
 	 * Removes all elements from the list.
@@ -79,13 +79,13 @@ public interface IPrimativeFloatList {
 	void clear();
 
 	/**
-	 * Returns true if the list contains the specified float.
+	 * Returns true if the list contains the specified byte.
 	 * 
 	 * @param value		value to test presence in list
 	 * 
 	 * @return			{@code true} if {@code value} is in list.
 	 */
-	boolean contains(float value);
+	boolean contains(byte value);
 
 	/**
 	 * Returns true if list contains all the elements of the specified
@@ -95,7 +95,7 @@ public interface IPrimativeFloatList {
 	 *
 	 * @return {@code true} if list contained all members of input collection
 	 */
-	boolean containsAll(Collection<Float> c);
+	boolean containsAll(Collection<Byte> c);
 
 	/**
 	 * Returns true if list contains all the elements of the specified
@@ -105,7 +105,7 @@ public interface IPrimativeFloatList {
 	 *
 	 * @return {@code true} if list contained all members of input list
 	 */
-	boolean containsAll(IPrimativeFloatList c);
+	boolean containsAll(IPrimativeByteList c);
 
 	/**
 	 * Returns the element at the specified index.
@@ -114,7 +114,7 @@ public interface IPrimativeFloatList {
 	 *
 	 * @return the element at {@code index}
 	 */
-	float get(int index);
+	byte get(int index);
 
 	/**
 	 * Returns the index of the first occurrence of the specified value
@@ -124,7 +124,7 @@ public interface IPrimativeFloatList {
 	 *
 	 * @return index of first occurance of {@code i}
 	 */
-	int indexOf(float i);
+	int indexOf(byte i);
 
 	/**
 	 * Returns {@code true} if empty.
@@ -141,7 +141,7 @@ public interface IPrimativeFloatList {
 	 *
 	 * @return index of last occurance of {@code i}
 	 */
-	int lastIndexOf(float value);
+	int lastIndexOf(byte value);
 
 	/**
 	 * Removes the first occurance of {@code value} in the list.
@@ -150,7 +150,7 @@ public interface IPrimativeFloatList {
 	 *
 	 * @return {@code true} if list was modified by this operation.
 	 */
-	boolean removeValue(float value);
+	boolean removeValue(byte value);
 
 	/**
 	 * Remove the element at the specified index.
@@ -184,7 +184,7 @@ public interface IPrimativeFloatList {
 	 * 
 	 * @return the old value at index (null if no value).
 	 */
-	Float set(int index, float element);
+	Byte set(int index, byte element);
 
 	/**
 	 * Returns the number of elements in this list. Does not overflow,
@@ -203,7 +203,7 @@ public interface IPrimativeFloatList {
 	 *
 	 * @return the sublist
 	 */
-	IPrimativeFloatList subList(int fromIndex, int toIndex);
+	IPrimativeByteList subList(int fromIndex, int toIndex);
 
 	/**
 	 * Returns an array containing all of the elements in this list in proper
@@ -216,7 +216,7 @@ public interface IPrimativeFloatList {
 	 * @return an array containing all of the elements in this list in proper
 	 *		   sequence
 	 */
-	float[] toArray();
+	byte[] toArray();
 
 	/**
 	 * Compares the specified object with this list for equality.

@@ -1,37 +1,37 @@
 /*
- * IByteList.java
+ * ICharList.java
  *
  * Sep 9, 2012 
  */
-package lists;
+package us.rothmichaels.lib.lists;
 
 import java.util.Collection;
 
 /**
- * An interface for Lists of primative bytes.
+ * An interface for Lists of primative chars.
  * 
  * @see java.lang.List
  * 
  * @author Roth Michaels (<i><a
  *		   href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
  */
-public interface IPrimativeByteList {
+public interface IPrimativeCharList {
 
 	/**
-	 * Appends an byte to the end of the list.
+	 * Appends an char to the end of the list.
 	 *
-	 * @param e byte to append to the list
+	 * @param e char to append to the list
 	 *
 	 * @return {@code true} (as specified by {@link Collection#add})
 	 */
-	boolean add(byte e);
+	boolean add(char e);
 
 	/**
 	 * 
 	 * @param index
 	 * @param element
 	 */
-	void add(int index, byte element);
+	void add(int index, char element);
 
 	/**
 	 * Appends the specified collection to the list.
@@ -40,7 +40,7 @@ public interface IPrimativeByteList {
 	 *
 	 * @return {@code true} if list was modified as a result of the call
 	 */
-	boolean addAll(Collection<Byte> c);
+	boolean addAll(Collection<Character> c);
 
 	/**
 	 * Insert the elements in the specified collection into
@@ -51,7 +51,7 @@ public interface IPrimativeByteList {
 	 * 
 	 * @return {@code true} if list was modified as a result of the call
 	 */
-	boolean addAll(int index, Collection<Byte> c);
+	boolean addAll(int index, Collection<Character> c);
 
 	/**
 	 * Appends the specified list to the list.
@@ -60,7 +60,7 @@ public interface IPrimativeByteList {
 	 *
 	 * @return {@code true} if list was modified as a result of the call
 	 */
-	boolean addAll(IPrimativeByteList l);
+	boolean addAll(IPrimativeCharList l);
 
 	/**
 	 * Insert the elements in the specified input into
@@ -71,7 +71,7 @@ public interface IPrimativeByteList {
 	 * 
 	 * @return {@code true} if list was modified as a result of the call
 	 */
-	boolean addAll(int index, IPrimativeByteList l);
+	boolean addAll(int index, IPrimativeCharList l);
 
 	/**
 	 * Removes all elements from the list.
@@ -79,13 +79,13 @@ public interface IPrimativeByteList {
 	void clear();
 
 	/**
-	 * Returns true if the list contains the specified byte.
+	 * Returns true if the list contains the specified char.
 	 * 
 	 * @param value		value to test presence in list
 	 * 
 	 * @return			{@code true} if {@code value} is in list.
 	 */
-	boolean contains(byte value);
+	boolean contains(char value);
 
 	/**
 	 * Returns true if list contains all the elements of the specified
@@ -95,7 +95,7 @@ public interface IPrimativeByteList {
 	 *
 	 * @return {@code true} if list contained all members of input collection
 	 */
-	boolean containsAll(Collection<Byte> c);
+	boolean containsAll(Collection<Character> c);
 
 	/**
 	 * Returns true if list contains all the elements of the specified
@@ -105,7 +105,7 @@ public interface IPrimativeByteList {
 	 *
 	 * @return {@code true} if list contained all members of input list
 	 */
-	boolean containsAll(IPrimativeByteList c);
+	boolean containsAll(IPrimativeCharList c);
 
 	/**
 	 * Returns the element at the specified index.
@@ -114,7 +114,7 @@ public interface IPrimativeByteList {
 	 *
 	 * @return the element at {@code index}
 	 */
-	byte get(int index);
+	char get(int index);
 
 	/**
 	 * Returns the index of the first occurrence of the specified value
@@ -124,7 +124,7 @@ public interface IPrimativeByteList {
 	 *
 	 * @return index of first occurance of {@code i}
 	 */
-	int indexOf(byte i);
+	int indexOf(char i);
 
 	/**
 	 * Returns {@code true} if empty.
@@ -141,7 +141,7 @@ public interface IPrimativeByteList {
 	 *
 	 * @return index of last occurance of {@code i}
 	 */
-	int lastIndexOf(byte value);
+	int lastIndexOf(char value);
 
 	/**
 	 * Removes the first occurance of {@code value} in the list.
@@ -150,7 +150,7 @@ public interface IPrimativeByteList {
 	 *
 	 * @return {@code true} if list was modified by this operation.
 	 */
-	boolean removeValue(byte value);
+	boolean removeValue(char value);
 
 	/**
 	 * Remove the element at the specified index.
@@ -184,7 +184,7 @@ public interface IPrimativeByteList {
 	 * 
 	 * @return the old value at index (null if no value).
 	 */
-	Byte set(int index, byte element);
+	Character set(int index, char element);
 
 	/**
 	 * Returns the number of elements in this list. Does not overflow,
@@ -203,7 +203,7 @@ public interface IPrimativeByteList {
 	 *
 	 * @return the sublist
 	 */
-	IPrimativeByteList subList(int fromIndex, int toIndex);
+	IPrimativeCharList subList(int fromIndex, int toIndex);
 
 	/**
 	 * Returns an array containing all of the elements in this list in proper
@@ -216,7 +216,7 @@ public interface IPrimativeByteList {
 	 * @return an array containing all of the elements in this list in proper
 	 *		   sequence
 	 */
-	byte[] toArray();
+	char[] toArray();
 
 	/**
 	 * Compares the specified object with this list for equality.
