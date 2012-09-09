@@ -19,6 +19,7 @@ public final class ArrayBuilder {
 	
 	/**
 	 * Do not instantiate this class 
+	 * @deprecated
 	 */
 	@Deprecated
 	private ArrayBuilder() {
