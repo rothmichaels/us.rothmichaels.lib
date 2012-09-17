@@ -2,7 +2,7 @@
   <parent>
     <groupId>us.rothmichaels.parents</groupId>
     <artifactId>testing-parent</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>us.rothmichaels.lib</groupId>
@@ -13,9 +13,8 @@
   <packaging>pom</packaging>
 
   <modules>
-  	<module>us.rm-collections</module>
-  	<module>us.rm-reflect</module>
-  	<module>us.rm-util</module>
-  	<module>us.rm-dsp</module>
+    <module>us.rm-reflect</module>
+    <module>us.rm-util</module>
+    <module>us.rm-collections</module>
   </modules>
 </project>
