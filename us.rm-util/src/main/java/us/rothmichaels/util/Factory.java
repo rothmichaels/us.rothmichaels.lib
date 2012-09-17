@@ -3,7 +3,7 @@
  *
  * Feb 24, 2012 
  */
-package us.rothmichaels.lib.util;
+package us.rothmichaels.util;
 
 /**
  *

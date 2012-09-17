@@ -1,4 +1,4 @@
-package us.rothmichaels.lib.util;
+package us.rothmichaels.util;
 
 
 /*

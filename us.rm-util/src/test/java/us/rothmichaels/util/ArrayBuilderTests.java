@@ -3,11 +3,12 @@
  *
  * Feb 27, 2012 
  */
-package us.rothmichaels.lib.util;
+package us.rothmichaels.util;
 
 import static org.junit.Assert.*;
 
-import us.rothmichaels.lib.util.Factory;
+import us.rothmichaels.util.ArrayBuilder;
+import us.rothmichaels.util.Factory;
 
 import org.junit.After;
 import org.junit.Before;
