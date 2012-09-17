@@ -1,37 +1,37 @@
 /*
- * IShortList.java
+ * IDoubleList.java
  *
  * Sep 9, 2012 
  */
-package us.rothmichaels.lib.lists;
+package us.rothmichaels.lists;
 
 import java.util.Collection;
 
 /**
- * An interface for Lists of primative shorts.
+ * An interface for Lists of primative doubles.
  * 
  * @see java.lang.List
  * 
  * @author Roth Michaels (<i><a
  *		   href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
  */
-public interface IPrimativeShortList {
+public interface IPrimativeDoubleList {
 
 	/**
-	 * Appends an short to the end of the list.
+	 * Appends an double to the end of the list.
 	 *
-	 * @param e short to append to the list
+	 * @param e double to append to the list
 	 *
 	 * @return {@code true} (as specified by {@link Collection#add})
 	 */
-	boolean add(short e);
+	boolean add(double e);
 
 	/**
 	 * 
 	 * @param index
 	 * @param element
 	 */
-	void add(int index, short element);
+	void add(int index, double element);
 
 	/**
 	 * Appends the specified collection to the list.
@@ -40,7 +40,7 @@ public interface IPrimativeShortList {
 	 *
 	 * @return {@code true} if list was modified as a result of the call
 	 */
-	boolean addAll(Collection<Short> c);
+	boolean addAll(Collection<Double> c);
 
 	/**
 	 * Insert the elements in the specified collection into
@@ -51,7 +51,7 @@ public interface IPrimativeShortList {
 	 * 
 	 * @return {@code true} if list was modified as a result of the call
 	 */
-	boolean addAll(int index, Collection<Short> c);
+	boolean addAll(int index, Collection<Double> c);
 
 	/**
 	 * Appends the specified list to the list.
@@ -60,7 +60,7 @@ public interface IPrimativeShortList {
 	 *
 	 * @return {@code true} if list was modified as a result of the call
 	 */
-	boolean addAll(IPrimativeShortList l);
+	boolean addAll(IPrimativeDoubleList l);
 
 	/**
 	 * Insert the elements in the specified input into
@@ -71,7 +71,7 @@ public interface IPrimativeShortList {
 	 * 
 	 * @return {@code true} if list was modified as a result of the call
 	 */
-	boolean addAll(int index, IPrimativeShortList l);
+	boolean addAll(int index, IPrimativeDoubleList l);
 
 	/**
 	 * Removes all elements from the list.
@@ -79,13 +79,13 @@ public interface IPrimativeShortList {
 	void clear();
 
 	/**
-	 * Returns true if the list contains the specified short.
+	 * Returns true if the list contains the specified double.
 	 * 
 	 * @param value		value to test presence in list
 	 * 
 	 * @return			{@code true} if {@code value} is in list.
 	 */
-	boolean contains(short value);
+	boolean contains(double value);
 
 	/**
 	 * Returns true if list contains all the elements of the specified
@@ -95,7 +95,7 @@ public interface IPrimativeShortList {
 	 *
 	 * @return {@code true} if list contained all members of input collection
 	 */
-	boolean containsAll(Collection<Short> c);
+	boolean containsAll(Collection<Double> c);
 
 	/**
 	 * Returns true if list contains all the elements of the specified
@@ -105,7 +105,7 @@ public interface IPrimativeShortList {
 	 *
 	 * @return {@code true} if list contained all members of input list
 	 */
-	boolean containsAll(IPrimativeShortList c);
+	boolean containsAll(IPrimativeDoubleList c);
 
 	/**
 	 * Returns the element at the specified index.
@@ -114,7 +114,7 @@ public interface IPrimativeShortList {
 	 *
 	 * @return the element at {@code index}
 	 */
-	short get(int index);
+	double get(int index);
 
 	/**
 	 * Returns the index of the first occurrence of the specified value
@@ -124,7 +124,7 @@ public interface IPrimativeShortList {
 	 *
 	 * @return index of first occurance of {@code i}
 	 */
-	int indexOf(short i);
+	int indexOf(double i);
 
 	/**
 	 * Returns {@code true} if empty.
@@ -141,7 +141,7 @@ public interface IPrimativeShortList {
 	 *
 	 * @return index of last occurance of {@code i}
 	 */
-	int lastIndexOf(short value);
+	int lastIndexOf(double value);
 
 	/**
 	 * Removes the first occurance of {@code value} in the list.
@@ -150,7 +150,7 @@ public interface IPrimativeShortList {
 	 *
 	 * @return {@code true} if list was modified by this operation.
 	 */
-	boolean removeValue(short value);
+	boolean removeValue(double value);
 
 	/**
 	 * Remove the element at the specified index.
@@ -184,7 +184,7 @@ public interface IPrimativeShortList {
 	 * 
 	 * @return the old value at index (null if no value).
 	 */
-	Short set(int index, short element);
+	Double set(int index, double element);
 
 	/**
 	 * Returns the number of elements in this list. Does not overflow,
@@ -203,7 +203,7 @@ public interface IPrimativeShortList {
 	 *
 	 * @return the sublist
 	 */
-	IPrimativeShortList subList(int fromIndex, int toIndex);
+	IPrimativeDoubleList subList(int fromIndex, int toIndex);
 
 	/**
 	 * Returns an array containing all of the elements in this list in proper
@@ -216,7 +216,7 @@ public interface IPrimativeShortList {
 	 * @return an array containing all of the elements in this list in proper
 	 *		   sequence
 	 */
-	short[] toArray();
+	double[] toArray();
 
 	/**
 	 * Compares the specified object with this list for equality.

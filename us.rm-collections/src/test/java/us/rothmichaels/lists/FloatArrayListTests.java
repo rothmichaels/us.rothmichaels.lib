@@ -3,7 +3,7 @@
  *
  * Dec 13, 2011 
  */
-package us.rothmichaels.lib.lists;
+package us.rothmichaels.lists;
 
 import static org.junit.Assert.*;
 
@@ -15,7 +15,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import us.rothmichaels.lib.lists.FloatArrayList;
+import us.rothmichaels.lists.FloatArrayList;
 
 /**
  * Unit Tests for {@link FloatArrayList}

@@ -3,7 +3,7 @@
  *
  * Sep 9, 2012 
  */
-package us.rothmichaels.lib.lists;
+package us.rothmichaels.lists;
 
 import java.util.Collection;
 

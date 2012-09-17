@@ -3,7 +3,7 @@
  *
  * Oct 28, 2011 
  */
-package us.rothmichaels.lib.lists;
+package us.rothmichaels.lists;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -36,7 +36,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 	
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#add(float)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#add(float)
 	 */
 	@Override
 	public boolean add(float f) {
@@ -52,7 +52,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 	
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#add(int, float)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#add(int, float)
 	 */
 	@Override
 	public void add(int index, float f) {
@@ -68,7 +68,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#size()
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#size()
 	 */
 	@Override
 	public int size() {
@@ -76,7 +76,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#clear()
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#clear()
 	 */
 	@Override
 	public void clear() {
@@ -85,7 +85,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#toArray()
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#toArray()
 	 */
 	@Override
 	public final float[] toArray() {
@@ -95,7 +95,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#addAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#addAll(java.util.Collection)
 	 */
 	@Override
 	public boolean addAll(Collection<Float> c) {
@@ -106,7 +106,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#addAll(int, java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#addAll(int, java.util.Collection)
 	 */
 	@Override
 	public boolean addAll(int index, Collection<Float> c) {
@@ -121,7 +121,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#addAll(us.rothmichaels.lib.lists.IPrimativeFloatList)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#addAll(us.rothmichaels.lists.IPrimativeFloatList)
 	 */
 	@Override
 	public boolean addAll(IPrimativeFloatList l) {
@@ -130,7 +130,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#addAll(int, us.rothmichaels.lib.lists.IPrimativeFloatList)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#addAll(int, us.rothmichaels.lists.IPrimativeFloatList)
 	 */
 	@Override
 	public boolean addAll(int index, IPrimativeFloatList l) {
@@ -139,7 +139,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#contains(float)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#contains(float)
 	 */
 	@Override
 	public boolean contains(float value) {
@@ -148,7 +148,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#containsAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#containsAll(java.util.Collection)
 	 */
 	@Override
 	public boolean containsAll(Collection<Float> c) {
@@ -157,7 +157,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#containsAll(us.rothmichaels.lib.lists.IPrimativeFloatList)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#containsAll(us.rothmichaels.lists.IPrimativeFloatList)
 	 */
 	@Override
 	public boolean containsAll(IPrimativeFloatList c) {
@@ -166,7 +166,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#get(int)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#get(int)
 	 */
 	@Override
 	public float get(int index) {
@@ -175,7 +175,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#indexOf(float)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#indexOf(float)
 	 */
 	@Override
 	public int indexOf(float i) {
@@ -184,7 +184,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#isEmpty()
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#isEmpty()
 	 */
 	@Override
 	public boolean isEmpty() {
@@ -193,7 +193,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#lastIndexOf(float)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#lastIndexOf(float)
 	 */
 	@Override
 	public int lastIndexOf(float value) {
@@ -202,7 +202,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#removeValue(float)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#removeValue(float)
 	 */
 	@Override
 	public boolean removeValue(float value) {
@@ -211,7 +211,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#remove(int)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#remove(int)
 	 */
 	@Override
 	public boolean remove(int index) {
@@ -220,7 +220,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#removeAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#removeAll(java.util.Collection)
 	 */
 	@Override
 	public boolean removeAll(Collection<?> c) {
@@ -229,7 +229,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#retainAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#retainAll(java.util.Collection)
 	 */
 	@Override
 	public boolean retainAll(Collection<?> c) {
@@ -238,7 +238,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#set(int, float)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#set(int, float)
 	 */
 	@Override
 	public Float set(int index, float element) {
@@ -247,7 +247,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lib.lists.IPrimativeFloatList#subList(int, int)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#subList(int, int)
 	 */
 	@Override
 	public IPrimativeFloatList subList(int fromIndex, int toIndex) {
