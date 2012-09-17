@@ -3,7 +3,7 @@
  *
  * Dec 19, 2011 
  */
-package us.rothmichaels.lib.util;
+package us.rothmichaels.lib.lists;
 
 import java.util.ArrayList;
 import java.util.Arrays;

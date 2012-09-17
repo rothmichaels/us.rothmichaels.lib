@@ -3,7 +3,7 @@
  *
  * Sep 4, 2012 
  */
-package us.rothmichaels.lib.util;
+package us.rothmichaels.sets;
 
 import java.lang.ref.WeakReference;
 import java.util.Arrays;

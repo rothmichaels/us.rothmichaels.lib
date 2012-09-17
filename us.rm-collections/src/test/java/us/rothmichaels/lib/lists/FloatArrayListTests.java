@@ -3,13 +3,19 @@
  *
  * Dec 13, 2011 
  */
-package us.rothmichaels.lib.util;
+package us.rothmichaels.lib.lists;
 
 import static org.junit.Assert.*;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import us.rothmichaels.lib.lists.FloatArrayList;
 
 /**
  * Unit Tests for {@link FloatArrayList}
@@ -26,22 +32,32 @@ public class FloatArrayListTests {
 		System.arraycopy(TEST_ARRAY, 0, INTERNAL_TEST_ARRAY, 0, TEST_ARRAY.length);
 	}
 	
+	FloatArrayList testList;
+	
+	@Before
+	public void setUp() {
+		testList = new FloatArrayList();
+	}
+	
+	@After
+	public void tearDown() { }
+	
 	@Test
-	public void testDefaultConstructor() {
-		final FloatArrayList testList = new FloatArrayList();
-		
+	public void defaultConstructor() {
 		// test initial internal array
 		assertEquals("internal addPointer", 0, testList.addPointer);
 		org.junit.Assert.assertArrayEquals("internal array", new float[INITIAL_SIZE], testList.data, 0f);
 		
 		// test initial output
+		// TODO move to other tests
 		assertEquals("output size", 0, testList.size());
 		assertArrayEquals("output array", new float[0], testList.toArray(), 0f);
 	}
 	
 	@Test
-	public void testInitialSizeConstructor() {
+	public void initialSizeConstructor() {
 		final int initialSize = 13;
+		@SuppressWarnings("hiding")
 		final FloatArrayList testList = new FloatArrayList(initialSize);
 		
 		// test initial internal array
@@ -49,16 +65,16 @@ public class FloatArrayListTests {
 		assertArrayEquals("internal array", new float[initialSize], testList.data, 0f);
 		
 		// test initial output
+		// TODO move to other tests
 		assertEquals("output size", 0, testList.size());
 		assertArrayEquals("output array", new float[0], testList.toArray(), 0f);
 	}
 	
 	@Test
-	public void testAdd() {
+	public void add() {
 		final float testValue = 6.3f;
 		final float[] expectedInternal = new float[INITIAL_SIZE];
 		expectedInternal[0] = testValue;
-		final FloatArrayList testList = new FloatArrayList();
 		
 		testList.add(testValue);
 		
@@ -72,8 +88,7 @@ public class FloatArrayListTests {
 	}
 	
 	@Test
-	public void testAddExpand() {
-		final FloatArrayList testList = new FloatArrayList();
+	public void addExpand() {
 		testFill(testList);
 		
 		// test internal
@@ -86,12 +101,11 @@ public class FloatArrayListTests {
 	}
 	
 	@Test
-	public void testInsert() {
+	public void insert() {
 		final float[] testArray = { 0, 1, 23.4f, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		final float[] internalTestArray = new float[EXPANDED_INTERNAL_SIZE];
 		System.arraycopy(testArray, 0, internalTestArray, 0, testArray.length);
 		
-		final FloatArrayList testList = new FloatArrayList();
 		testFill(testList);
 		testList.add(2, 23.4f);
 		
@@ -105,8 +119,7 @@ public class FloatArrayListTests {
 	}
 	
 	@Test
-	public void testClear() {
-		final FloatArrayList testList = new FloatArrayList();
+	public void clear() {
 		testFill(testList);
 		
 		final float[] prevInternalArray = testList.data;
@@ -120,6 +133,125 @@ public class FloatArrayListTests {
 		// test external
 		assertEquals("output size", 0, testList.size());
 		assertArrayEquals("output array", new float[0], testList.toArray(), 0f);
+	}
+	
+	@Test
+	public void size() {
+		// new list size
+		assertEquals(0, testList.size());
+		
+		testList.add(2f);
+		testList.add(3f);
+		
+		// test size
+		assertEquals(0, testList.size());
+	}
+	
+	@Test
+	public void toArray() {
+		// test initial array
+		assertArrayEquals("output array", new float[0], testList.toArray(), 0f);
+		
+		testList.add(2f);
+		testList.add(3f);
+		
+		assertArrayEquals(new float[] { 2f, 3f }, testList.toArray(), 0f);
+	}
+	
+	@Test
+	public void addAllCollection() {
+		testList.add(1f);
+		
+		testList.addAll(Collections.unmodifiableList(Arrays.asList(new Float[] {
+				2f, 3f, 4f })));
+		
+		assertEquals(1f, testList.data[0], 0f);
+		assertEquals(2f, testList.data[1], 0f);
+		assertEquals(3f, testList.data[2], 0f);
+		assertEquals(4f, testList.data[3], 0f);
+	}
+	
+	@Test
+	public void addAllCollectionAtIndex() {
+		
+		fail("write a test");
+	}
+	
+	@Test
+	public void addAll() {
+
+		fail("write a test");
+	}
+	
+	@Test
+	public void addAllAtIndex() {
+
+		fail("write a test");
+	}
+	
+	@Test
+	public void contains() {
+		fail("write a test");
+	}
+	
+	@Test
+	public void containsAllColleciton() {
+		fail("write a test");
+	}
+	
+	@Test
+	public void containsAll() {
+		fail("write a test");
+	}
+	
+	@Test
+	public void get() {
+		fail("write a test");
+	}
+	
+	@Test
+	public void indexOf() {
+		fail("write a test");
+	}
+	
+	@Test
+	public void isEmpty() {
+		fail("write a test");
+	}
+	
+	@Test
+	public void lastIndexOf() {
+		fail("write a test");	
+	}
+	
+	@Test
+	public void removeValue() {
+		fail("write a test");
+	}
+	
+	@Test
+	public void remove() { 
+		fail("write a test");
+	}
+	
+	@Test
+	public void removeAllCollection() {
+		fail("write a test");
+	}
+	
+	@Test
+	public void retainAllCollection() {
+		fail("write a test");
+	}
+	
+	@Test
+	public void set() {
+		fail("write a test");
+	}
+	
+	@Test
+	public void subList() {
+		fail("write a test");
 	}
 	
 	private void testFill(FloatArrayList al) {

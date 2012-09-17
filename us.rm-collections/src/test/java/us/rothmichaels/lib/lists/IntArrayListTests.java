@@ -3,13 +3,15 @@
  *
  * Dec 19, 2011 
  */
-package us.rothmichaels.lib.util;
+package us.rothmichaels.lib.lists;
 
 import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import us.rothmichaels.lib.lists.IntArrayList;
 
 /**
  *
