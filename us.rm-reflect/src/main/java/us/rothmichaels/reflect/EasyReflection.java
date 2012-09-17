@@ -3,7 +3,7 @@
  *
  * Dec 15, 2011 
  */
-package us.rothmichaels.lib.reflect;
+package us.rothmichaels.reflect;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
