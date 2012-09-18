@@ -167,14 +167,14 @@ public interface IPrimativeCharList {
 	 *
 	 * @return {@code true} if list was modified by this operation.
 	 */
-	boolean removeAll(Collection<?> c);
+	boolean removeAll(Collection<Character> c);
 
 	/**
 	 * 
 	 * @param c
 	 * @return
 	 */
-	boolean retainAll(Collection<?> c);
+	boolean retainAll(Collection<Character> c);
 
 	/**
 	 * Set the value at a specific index in the list.
@@ -184,7 +184,7 @@ public interface IPrimativeCharList {
 	 * 
 	 * @return the old value at index (null if no value).
 	 */
-	Character set(int index, char element);
+	char set(int index, char element);
 
 	/**
 	 * Returns the number of elements in this list. Does not overflow,

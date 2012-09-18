@@ -167,14 +167,14 @@ public interface IPrimativeLongList {
 	 *
 	 * @return {@code true} if list was modified by this operation.
 	 */
-	boolean removeAll(Collection<?> c);
+	boolean removeAll(Collection<Long> c);
 
 	/**
 	 * 
 	 * @param c
 	 * @return
 	 */
-	boolean retainAll(Collection<?> c);
+	boolean retainAll(Collection<Long> c);
 
 	/**
 	 * Set the value at a specific index in the list.
@@ -184,7 +184,7 @@ public interface IPrimativeLongList {
 	 * 
 	 * @return the old value at index (null if no value).
 	 */
-	Long set(int index, long element);
+	long set(int index, long element);
 
 	/**
 	 * Returns the number of elements in this list. Does not overflow,

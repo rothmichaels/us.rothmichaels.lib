@@ -167,14 +167,14 @@ public interface IPrimativeShortList {
 	 *
 	 * @return {@code true} if list was modified by this operation.
 	 */
-	boolean removeAll(Collection<?> c);
+	boolean removeAll(Collection<Short> c);
 
 	/**
 	 * 
 	 * @param c
 	 * @return
 	 */
-	boolean retainAll(Collection<?> c);
+	boolean retainAll(Collection<Short> c);
 
 	/**
 	 * Set the value at a specific index in the list.
@@ -184,7 +184,7 @@ public interface IPrimativeShortList {
 	 * 
 	 * @return the old value at index (null if no value).
 	 */
-	Short set(int index, short element);
+	short set(int index, short element);
 
 	/**
 	 * Returns the number of elements in this list. Does not overflow,

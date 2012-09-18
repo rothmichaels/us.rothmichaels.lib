@@ -167,14 +167,14 @@ public interface IPrimativeDoubleList {
 	 *
 	 * @return {@code true} if list was modified by this operation.
 	 */
-	boolean removeAll(Collection<?> c);
+	boolean removeAll(Collection<Double> c);
 
 	/**
 	 * 
 	 * @param c
 	 * @return
 	 */
-	boolean retainAll(Collection<?> c);
+	boolean retainAll(Collection<Double> c);
 
 	/**
 	 * Set the value at a specific index in the list.
@@ -184,7 +184,7 @@ public interface IPrimativeDoubleList {
 	 * 
 	 * @return the old value at index (null if no value).
 	 */
-	Double set(int index, double element);
+	double set(int index, double element);
 
 	/**
 	 * Returns the number of elements in this list. Does not overflow,

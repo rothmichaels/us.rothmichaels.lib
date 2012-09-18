@@ -1,5 +1,5 @@
 /*
- * FloatArrayList.java
+ * LongArrayList.java
  *
  * Oct 28, 2011 
  */
@@ -9,41 +9,41 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * An {@link java.util.ArrayList}-like structure for storing primative floats.
+ * An {@link java.util.ArrayList}-like structure for storing primative longs.
  *
  * @author Roth Michaels (<i><a href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
  *
  */
-public class FloatArrayList implements IPrimativeFloatList {
+public class LongArrayList implements IPrimativeLongList {
 
-	protected float data[];
+	protected long data[];
 	protected int addPointer;
 
 	/**
-	 * Create an empty FloatArrayList with size 10.
+	 * Create an empty LongArrayList with size 10.
 	 */
-	public FloatArrayList() {
+	public LongArrayList() {
 		this(10);
 	}
 
 	/**
-	 * Create an empty FloatArrayList with arbitrary size
+	 * Create an empty LongArrayList with arbitrary size
 	 * 
 	 * @param initialSize Initial size
 	 */
-	public FloatArrayList(int initialSize) {
-		data = new float[initialSize];
+	public LongArrayList(int initialSize) {
+		data = new long[initialSize];
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#add(float)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#add(long)
 	 */
 	@Override
-	public boolean add(float f) {
-		// if array is full, float the size
+	public boolean add(long f) {
+		// if array is full, double the size
 		if (addPointer >= data.length) {
-			float tmp[] = data;
-			data = new float[tmp.length*2];
+			long tmp[] = data;
+			data = new long[tmp.length*2];
 			System.arraycopy(tmp, 0, data, 0, tmp.length);
 		}
 		data[addPointer++] = f;
@@ -52,15 +52,15 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#add(int, float)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#add(int, long)
 	 */
 	@Override
-	public void add(int index, float f) {
+	public void add(int index, long f) {
 		if (index < addPointer) {
-			// if array is full, float the size
+			// if array is full, double the size
 			if (addPointer >= data.length) {
-				float tmp[] = data;
-				data = new float[tmp.length*2];
+				long tmp[] = data;
+				data = new long[tmp.length*2];
 				System.arraycopy(tmp, 0, data, 0, tmp.length);
 			}
 			try {
@@ -76,7 +76,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#size()
+	 * @see us.rothmichaels.lists.IPrimativeLongList#size()
 	 */
 	@Override
 	public int size() {
@@ -84,42 +84,42 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#clear()
+	 * @see us.rothmichaels.lists.IPrimativeLongList#clear()
 	 */
 	@Override
 	public void clear() {
-		Arrays.fill(data, 0f);
+		Arrays.fill(data, 0);
 		addPointer = 0;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#toArray()
+	 * @see us.rothmichaels.lists.IPrimativeLongList#toArray()
 	 */
 	@Override
-	public final float[] toArray() {
-		float out[] = new float[addPointer];
+	public final long[] toArray() {
+		long out[] = new long[addPointer];
 		System.arraycopy(data, 0, out, 0, addPointer);
 		return out;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#addAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#addAll(java.util.Collection)
 	 */
 	@Override
-	public boolean addAll(Collection<Float> c) {
-		for (Float f : c) {
+	public boolean addAll(Collection<Long> c) {
+		for (Long f : c) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#addAll(int, java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#addAll(int, java.util.Collection)
 	 */
 	@Override
-	public boolean addAll(int index, Collection<Float> c) {
+	public boolean addAll(int index, Collection<Long> c) {
 		if (index < addPointer) {
-			for (float value : c) {
+			for (long value : c) {
 				add(index++, value);
 			}
 		} else {
@@ -130,25 +130,25 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#addAll(us.rothmichaels.lists.IPrimativeFloatList)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#addAll(us.rothmichaels.lists.IPrimativeLongList)
 	 */
 	@Override
-	public boolean addAll(IPrimativeFloatList l) {
-		float[] a = l.toArray();
-		for (float f : a) {
+	public boolean addAll(IPrimativeLongList l) {
+		long[] a = l.toArray();
+		for (long f : a) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#addAll(int, us.rothmichaels.lists.IPrimativeFloatList)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#addAll(int, us.rothmichaels.lists.IPrimativeLongList)
 	 */
 	@Override
-	public boolean addAll(int index, IPrimativeFloatList l) {
+	public boolean addAll(int index, IPrimativeLongList l) {
 		if (index < addPointer) {
-			float[] a = l.toArray();
-			for (float value : a) {
+			long[] a = l.toArray();
+			for (long value : a) {
 				add(index++, value);
 			}
 		} else {
@@ -159,13 +159,13 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#contains(float)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#contains(long)
 	 */
 	@Override
-	public boolean contains(float value) {
+	public boolean contains(long value) {
 		boolean r = false;
 
-		for (float val : data) {
+		for (long val : data) {
 			r |= (val == value);
 		}
 
@@ -173,13 +173,13 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#containsAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#containsAll(java.util.Collection)
 	 */
 	@Override
-	public boolean containsAll(Collection<Float> c) {
-		for (float value : c) {
+	public boolean containsAll(Collection<Long> c) {
+		for (long value : c) {
 			boolean b = false;
-			for (float val : data) {
+			for (long val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -191,15 +191,15 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#containsAll(us.rothmichaels.lists.IPrimativeFloatList)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#containsAll(us.rothmichaels.lists.IPrimativeLongList)
 	 */
 	@Override
-	public boolean containsAll(IPrimativeFloatList c) {
-		float[] a = c.toArray();
+	public boolean containsAll(IPrimativeLongList c) {
+		long[] a = c.toArray();
 
-		for (float value : a) {
+		for (long value : a) {
 			boolean b = false;
-			for (float val : data) {
+			for (long val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -211,10 +211,10 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#get(int)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#get(int)
 	 */
 	@Override
-	public float get(int index) {
+	public long get(int index) {
 		if (index < addPointer) {
 			try {
 				return data[index];				
@@ -228,11 +228,11 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#indexOf(float)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#indexOf(long)
 	 * @throws IllegalArgumentException if input does not exist in list
 	 */
 	@Override
-	public int indexOf(float i) throws IllegalArgumentException {
+	public int indexOf(long i) throws IllegalArgumentException {
 		for (int j = 0; j < data.length; ++j) {
 			if (data[j] == i) {
 				return j;
@@ -243,7 +243,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#isEmpty()
+	 * @see us.rothmichaels.lists.IPrimativeLongList#isEmpty()
 	 */
 	@Override
 	public boolean isEmpty() {
@@ -251,11 +251,11 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#lastIndexOf(float)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#lastIndexOf(long)
 	 * @throws IllegalArgumentException if input does not exist in list
 	 */
 	@Override
-	public int lastIndexOf(float value) throws IllegalArgumentException {
+	public int lastIndexOf(long value) throws IllegalArgumentException {
 		for (int j = data.length-1; j >= 0 ; --j) {
 			if (data[j] == value) {
 				return j;
@@ -266,10 +266,10 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#removeValue(float)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#removeValue(long)
 	 */
 	@Override
-	public boolean removeValue(float value) {
+	public boolean removeValue(long value) {
 		for (int i = 0; i < addPointer; ++i) {
 			if (value == data[i]) {
 				return remove(i);
@@ -280,7 +280,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#remove(int)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#remove(int)
 	 */
 	@Override
 	public boolean remove(int index) {
@@ -299,12 +299,12 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#removeAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#removeAll(java.util.Collection)
 	 */
 	@Override
-	public boolean removeAll(Collection<Float> c) {
+	public boolean removeAll(Collection<Long> c) {
 		boolean r = false;
-		for (float value : c) {
+		for (long value : c) {
 			r |= removeValue(value);
 		}
 
@@ -312,10 +312,10 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#retainAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#retainAll(java.util.Collection)
 	 */
 	@Override
-	public boolean retainAll(Collection<Float> c) {
+	public boolean retainAll(Collection<Long> c) {
 		for (int i = 0; i < addPointer; ++i) {
 			if (!c.contains(data[i])) {
 				remove(i);
@@ -326,13 +326,13 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#set(int, float)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#set(int, long)
 	 */
 	@Override
-	public float set(int index, float element) {
+	public long set(int index, long element) {
 		if (index < addPointer) {
 			try {
-				float old = data[index];
+				long old = data[index];
 				data[index] = element;
 
 				return old; // RETURN
@@ -346,15 +346,15 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#subList(int, int)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#subList(int, int)
 	 */
 	@Override
-	public IPrimativeFloatList subList(int fromIndex, int toIndex) {
+	public IPrimativeLongList subList(int fromIndex, int toIndex) {
 		if (toIndex > addPointer || toIndex < fromIndex) {
 			throw new IndexOutOfBoundsException();
 		}
 		final int newSize = toIndex - fromIndex; 
-		final FloatArrayList out = new FloatArrayList();
+		final LongArrayList out = new LongArrayList();
 
 		try {
 			System.arraycopy(data, fromIndex, out.data, 0, newSize);

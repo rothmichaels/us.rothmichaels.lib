@@ -1,5 +1,5 @@
 /*
- * FloatArrayList.java
+ * CharacterArrayList.java
  *
  * Oct 28, 2011 
  */
@@ -9,41 +9,41 @@ import java.util.Arrays;
 import java.util.Collection;
 
 /**
- * An {@link java.util.ArrayList}-like structure for storing primative floats.
+ * An {@link java.util.ArrayList}-like structure for storing primative chars.
  *
  * @author Roth Michaels (<i><a href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
  *
  */
-public class FloatArrayList implements IPrimativeFloatList {
+public class CharArrayList implements IPrimativeCharList {
 
-	protected float data[];
+	protected char data[];
 	protected int addPointer;
 
 	/**
-	 * Create an empty FloatArrayList with size 10.
+	 * Create an empty CharacterArrayList with size 10.
 	 */
-	public FloatArrayList() {
+	public CharArrayList() {
 		this(10);
 	}
 
 	/**
-	 * Create an empty FloatArrayList with arbitrary size
+	 * Create an empty CharacterArrayList with arbitrary size
 	 * 
 	 * @param initialSize Initial size
 	 */
-	public FloatArrayList(int initialSize) {
-		data = new float[initialSize];
+	public CharArrayList(int initialSize) {
+		data = new char[initialSize];
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#add(float)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#add(char)
 	 */
 	@Override
-	public boolean add(float f) {
-		// if array is full, float the size
+	public boolean add(char f) {
+		// if array is full, double the size
 		if (addPointer >= data.length) {
-			float tmp[] = data;
-			data = new float[tmp.length*2];
+			char tmp[] = data;
+			data = new char[tmp.length*2];
 			System.arraycopy(tmp, 0, data, 0, tmp.length);
 		}
 		data[addPointer++] = f;
@@ -52,15 +52,15 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#add(int, float)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#add(int, char)
 	 */
 	@Override
-	public void add(int index, float f) {
+	public void add(int index, char f) {
 		if (index < addPointer) {
-			// if array is full, float the size
+			// if array is full, double the size
 			if (addPointer >= data.length) {
-				float tmp[] = data;
-				data = new float[tmp.length*2];
+				char tmp[] = data;
+				data = new char[tmp.length*2];
 				System.arraycopy(tmp, 0, data, 0, tmp.length);
 			}
 			try {
@@ -76,7 +76,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#size()
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#size()
 	 */
 	@Override
 	public int size() {
@@ -84,42 +84,42 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#clear()
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#clear()
 	 */
 	@Override
 	public void clear() {
-		Arrays.fill(data, 0f);
+		Arrays.fill(data, (char) 0);
 		addPointer = 0;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#toArray()
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#toArray()
 	 */
 	@Override
-	public final float[] toArray() {
-		float out[] = new float[addPointer];
+	public final char[] toArray() {
+		char out[] = new char[addPointer];
 		System.arraycopy(data, 0, out, 0, addPointer);
 		return out;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#addAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#addAll(java.util.Collection)
 	 */
 	@Override
-	public boolean addAll(Collection<Float> c) {
-		for (Float f : c) {
+	public boolean addAll(Collection<Character> c) {
+		for (Character f : c) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#addAll(int, java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#addAll(int, java.util.Collection)
 	 */
 	@Override
-	public boolean addAll(int index, Collection<Float> c) {
+	public boolean addAll(int index, Collection<Character> c) {
 		if (index < addPointer) {
-			for (float value : c) {
+			for (char value : c) {
 				add(index++, value);
 			}
 		} else {
@@ -130,25 +130,25 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#addAll(us.rothmichaels.lists.IPrimativeFloatList)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#addAll(us.rothmichaels.lists.IPrimativeCharacterList)
 	 */
 	@Override
-	public boolean addAll(IPrimativeFloatList l) {
-		float[] a = l.toArray();
-		for (float f : a) {
+	public boolean addAll(IPrimativeCharList l) {
+		char[] a = l.toArray();
+		for (char f : a) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#addAll(int, us.rothmichaels.lists.IPrimativeFloatList)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#addAll(int, us.rothmichaels.lists.IPrimativeCharacterList)
 	 */
 	@Override
-	public boolean addAll(int index, IPrimativeFloatList l) {
+	public boolean addAll(int index, IPrimativeCharList l) {
 		if (index < addPointer) {
-			float[] a = l.toArray();
-			for (float value : a) {
+			char[] a = l.toArray();
+			for (char value : a) {
 				add(index++, value);
 			}
 		} else {
@@ -159,13 +159,13 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#contains(float)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#contains(char)
 	 */
 	@Override
-	public boolean contains(float value) {
+	public boolean contains(char value) {
 		boolean r = false;
 
-		for (float val : data) {
+		for (char val : data) {
 			r |= (val == value);
 		}
 
@@ -173,13 +173,13 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#containsAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#containsAll(java.util.Collection)
 	 */
 	@Override
-	public boolean containsAll(Collection<Float> c) {
-		for (float value : c) {
+	public boolean containsAll(Collection<Character> c) {
+		for (char value : c) {
 			boolean b = false;
-			for (float val : data) {
+			for (char val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -191,15 +191,15 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#containsAll(us.rothmichaels.lists.IPrimativeFloatList)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#containsAll(us.rothmichaels.lists.IPrimativeCharacterList)
 	 */
 	@Override
-	public boolean containsAll(IPrimativeFloatList c) {
-		float[] a = c.toArray();
+	public boolean containsAll(IPrimativeCharList c) {
+		char[] a = c.toArray();
 
-		for (float value : a) {
+		for (char value : a) {
 			boolean b = false;
-			for (float val : data) {
+			for (char val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -211,10 +211,10 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#get(int)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#get(int)
 	 */
 	@Override
-	public float get(int index) {
+	public char get(int index) {
 		if (index < addPointer) {
 			try {
 				return data[index];				
@@ -228,11 +228,11 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#indexOf(float)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#indexOf(char)
 	 * @throws IllegalArgumentException if input does not exist in list
 	 */
 	@Override
-	public int indexOf(float i) throws IllegalArgumentException {
+	public int indexOf(char i) throws IllegalArgumentException {
 		for (int j = 0; j < data.length; ++j) {
 			if (data[j] == i) {
 				return j;
@@ -243,7 +243,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#isEmpty()
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#isEmpty()
 	 */
 	@Override
 	public boolean isEmpty() {
@@ -251,11 +251,11 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#lastIndexOf(float)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#lastIndexOf(char)
 	 * @throws IllegalArgumentException if input does not exist in list
 	 */
 	@Override
-	public int lastIndexOf(float value) throws IllegalArgumentException {
+	public int lastIndexOf(char value) throws IllegalArgumentException {
 		for (int j = data.length-1; j >= 0 ; --j) {
 			if (data[j] == value) {
 				return j;
@@ -266,10 +266,10 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#removeValue(float)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#removeValue(char)
 	 */
 	@Override
-	public boolean removeValue(float value) {
+	public boolean removeValue(char value) {
 		for (int i = 0; i < addPointer; ++i) {
 			if (value == data[i]) {
 				return remove(i);
@@ -280,7 +280,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#remove(int)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#remove(int)
 	 */
 	@Override
 	public boolean remove(int index) {
@@ -299,12 +299,12 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#removeAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#removeAll(java.util.Collection)
 	 */
 	@Override
-	public boolean removeAll(Collection<Float> c) {
+	public boolean removeAll(Collection<Character> c) {
 		boolean r = false;
-		for (float value : c) {
+		for (char value : c) {
 			r |= removeValue(value);
 		}
 
@@ -312,10 +312,10 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#retainAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#retainAll(java.util.Collection)
 	 */
 	@Override
-	public boolean retainAll(Collection<Float> c) {
+	public boolean retainAll(Collection<Character> c) {
 		for (int i = 0; i < addPointer; ++i) {
 			if (!c.contains(data[i])) {
 				remove(i);
@@ -326,13 +326,13 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#set(int, float)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#set(int, char)
 	 */
 	@Override
-	public float set(int index, float element) {
+	public char set(int index, char element) {
 		if (index < addPointer) {
 			try {
-				float old = data[index];
+				char old = data[index];
 				data[index] = element;
 
 				return old; // RETURN
@@ -346,15 +346,15 @@ public class FloatArrayList implements IPrimativeFloatList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#subList(int, int)
+	 * @see us.rothmichaels.lists.IPrimativeCharacterList#subList(int, int)
 	 */
 	@Override
-	public IPrimativeFloatList subList(int fromIndex, int toIndex) {
+	public IPrimativeCharList subList(int fromIndex, int toIndex) {
 		if (toIndex > addPointer || toIndex < fromIndex) {
 			throw new IndexOutOfBoundsException();
 		}
 		final int newSize = toIndex - fromIndex; 
-		final FloatArrayList out = new FloatArrayList();
+		final CharArrayList out = new CharArrayList();
 
 		try {
 			System.arraycopy(data, fromIndex, out.data, 0, newSize);

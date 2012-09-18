@@ -2,7 +2,7 @@
   <parent>
     <groupId>us.rothmichaels.parents</groupId>
     <artifactId>testing-parent</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <groupId>us.rothmichaels.lib</groupId>
@@ -17,4 +17,5 @@
     <module>us.rm-util</module>
     <module>us.rm-collections</module>
   </modules>
+
 </project>

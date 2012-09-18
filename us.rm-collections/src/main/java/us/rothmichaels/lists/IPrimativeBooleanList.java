@@ -167,14 +167,14 @@ public interface IPrimativeBooleanList {
 	 *
 	 * @return {@code true} if list was modified by this operation.
 	 */
-	boolean removeAll(Collection<?> c);
+	boolean removeAll(Collection<Boolean> c);
 
 	/**
 	 * 
 	 * @param c
 	 * @return
 	 */
-	boolean retainAll(Collection<?> c);
+	boolean retainAll(Collection<Boolean> c);
 
 	/**
 	 * Set the value at a specific index in the list.
@@ -184,7 +184,7 @@ public interface IPrimativeBooleanList {
 	 * 
 	 * @return the old value at index (null if no value).
 	 */
-	Boolean set(int index, boolean element);
+	boolean set(int index, boolean element);
 
 	/**
 	 * Returns the number of elements in this list. Does not overflow,

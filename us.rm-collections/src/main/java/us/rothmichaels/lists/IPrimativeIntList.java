@@ -150,7 +150,7 @@ public interface IPrimativeIntList {
 	 *
 	 * @return {@code true} if list was modified by this operation.
 	 */
-	int removeValue(int value);
+	boolean removeValue(int value);
 
 	/**
 	 * Remove the element at the specified index.
@@ -159,7 +159,7 @@ public interface IPrimativeIntList {
 	 *
 	 * @return {@code true} if list was modified by this operation.
 	 */
-	int remove(int index);
+	boolean remove(int index);
 
 	/**
 	 * 
@@ -167,14 +167,14 @@ public interface IPrimativeIntList {
 	 *
 	 * @return {@code true} if list was modified by this operation.
 	 */
-	boolean removeAll(Collection<?> c);
+	boolean removeAll(Collection<Integer> c);
 
 	/**
 	 * 
 	 * @param c
 	 * @return
 	 */
-	boolean retainAll(Collection<?> c);
+	boolean retainAll(Collection<Integer> c);
 
 	/**
 	 * Set the value at a specific index in the list.
@@ -184,7 +184,7 @@ public interface IPrimativeIntList {
 	 * 
 	 * @return the old value at index (null if no value).
 	 */
-	Integer set(int index, int element);
+	int set(int index, int element);
 
 	/**
 	 * Returns the number of elements in this list. Does not overflow,
