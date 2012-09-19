@@ -42,9 +42,10 @@ import java.util.Collection;
 
 /**
  * An {@link java.util.ArrayList}-like structure for storing primative booleans.
- *
- * @author Roth Michaels (<i><a href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
- *
+ * 
+ * @author Roth Michaels (<i><a
+ *         href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
+ * 
  */
 public class BooleanArrayList implements IPrimativeBooleanList {
 
@@ -61,7 +62,8 @@ public class BooleanArrayList implements IPrimativeBooleanList {
 	/**
 	 * Create an empty BooleanArrayList with arbitrary size
 	 * 
-	 * @param initialSize Initial size
+	 * @param initialSize
+	 *            Initial size
 	 */
 	public BooleanArrayList(int initialSize) {
 		data = new boolean[initialSize];
@@ -74,8 +76,8 @@ public class BooleanArrayList implements IPrimativeBooleanList {
 	public boolean add(boolean f) {
 		// if array is full, double the size
 		if (addPointer >= data.length) {
-			boolean tmp[] = data;
-			data = new boolean[tmp.length*2];
+			final boolean tmp[] = data;
+			data = new boolean[tmp.length * 2];
 			System.arraycopy(tmp, 0, data, 0, tmp.length);
 		}
 		data[addPointer++] = f;
@@ -91,19 +93,20 @@ public class BooleanArrayList implements IPrimativeBooleanList {
 		if (index < addPointer) {
 			// if array is full, double the size
 			if (addPointer >= data.length) {
-				boolean tmp[] = data;
-				data = new boolean[tmp.length*2];
+				final boolean tmp[] = data;
+				data = new boolean[tmp.length * 2];
 				System.arraycopy(tmp, 0, data, 0, tmp.length);
 			}
 			try {
-				System.arraycopy(data, index, data, index+1, addPointer-index);
+				System.arraycopy(data, index, data, index + 1, addPointer
+						- index);
 				data[index] = f;
 				++addPointer;
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 	}
 
@@ -129,7 +132,7 @@ public class BooleanArrayList implements IPrimativeBooleanList {
 	 */
 	@Override
 	public final boolean[] toArray() {
-		boolean out[] = new boolean[addPointer];
+		final boolean out[] = new boolean[addPointer];
 		System.arraycopy(data, 0, out, 0, addPointer);
 		return out;
 	}
@@ -139,23 +142,24 @@ public class BooleanArrayList implements IPrimativeBooleanList {
 	 */
 	@Override
 	public boolean addAll(Collection<Boolean> c) {
-		for (Boolean f : c) {
+		for (final Boolean f : c) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeBooleanList#addAll(int, java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeBooleanList#addAll(int,
+	 *      java.util.Collection)
 	 */
 	@Override
 	public boolean addAll(int index, Collection<Boolean> c) {
 		if (index < addPointer) {
-			for (boolean value : c) {
+			for (final boolean value : c) {
 				add(index++, value);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -166,25 +170,26 @@ public class BooleanArrayList implements IPrimativeBooleanList {
 	 */
 	@Override
 	public boolean addAll(IPrimativeBooleanList l) {
-		boolean[] a = l.toArray();
-		for (boolean f : a) {
+		final boolean[] a = l.toArray();
+		for (final boolean f : a) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeBooleanList#addAll(int, us.rothmichaels.lists.IPrimativeBooleanList)
+	 * @see us.rothmichaels.lists.IPrimativeBooleanList#addAll(int,
+	 *      us.rothmichaels.lists.IPrimativeBooleanList)
 	 */
 	@Override
 	public boolean addAll(int index, IPrimativeBooleanList l) {
 		if (index < addPointer) {
-			boolean[] a = l.toArray();
-			for (boolean value : a) {
+			final boolean[] a = l.toArray();
+			for (final boolean value : a) {
 				add(index++, value);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -197,7 +202,7 @@ public class BooleanArrayList implements IPrimativeBooleanList {
 	public boolean contains(boolean value) {
 		boolean r = false;
 
-		for (boolean val : data) {
+		for (final boolean val : data) {
 			r |= (val == value);
 		}
 
@@ -209,9 +214,9 @@ public class BooleanArrayList implements IPrimativeBooleanList {
 	 */
 	@Override
 	public boolean containsAll(Collection<Boolean> c) {
-		for (boolean value : c) {
+		for (final boolean value : c) {
 			boolean b = false;
-			for (boolean val : data) {
+			for (final boolean val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -227,11 +232,11 @@ public class BooleanArrayList implements IPrimativeBooleanList {
 	 */
 	@Override
 	public boolean containsAll(IPrimativeBooleanList c) {
-		boolean[] a = c.toArray();
+		final boolean[] a = c.toArray();
 
-		for (boolean value : a) {
+		for (final boolean value : a) {
 			boolean b = false;
-			for (boolean val : data) {
+			for (final boolean val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -249,19 +254,20 @@ public class BooleanArrayList implements IPrimativeBooleanList {
 	public boolean get(int index) {
 		if (index < addPointer) {
 			try {
-				return data[index];				
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+				return data[index];
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 	}
 
 	/**
 	 * @see us.rothmichaels.lists.IPrimativeBooleanList#indexOf(boolean)
-	 * @throws IllegalArgumentException if input does not exist in list
+	 * @throws IllegalArgumentException
+	 *             if input does not exist in list
 	 */
 	@Override
 	public int indexOf(boolean i) throws IllegalArgumentException {
@@ -284,11 +290,12 @@ public class BooleanArrayList implements IPrimativeBooleanList {
 
 	/**
 	 * @see us.rothmichaels.lists.IPrimativeBooleanList#lastIndexOf(boolean)
-	 * @throws IllegalArgumentException if input does not exist in list
+	 * @throws IllegalArgumentException
+	 *             if input does not exist in list
 	 */
 	@Override
 	public int lastIndexOf(boolean value) throws IllegalArgumentException {
-		for (int j = data.length-1; j >= 0 ; --j) {
+		for (int j = data.length - 1; j >= 0; --j) {
 			if (data[j] == value) {
 				return j;
 			}
@@ -318,13 +325,14 @@ public class BooleanArrayList implements IPrimativeBooleanList {
 	public boolean remove(int index) {
 		if (index < addPointer) {
 			try {
-				System.arraycopy(data, index+1, data, index, addPointer-index);
+				System.arraycopy(data, index + 1, data, index, addPointer
+						- index);
 				--addPointer;
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -336,7 +344,7 @@ public class BooleanArrayList implements IPrimativeBooleanList {
 	@Override
 	public boolean removeAll(Collection<Boolean> c) {
 		boolean r = false;
-		for (boolean value : c) {
+		for (final boolean value : c) {
 			r |= removeValue(value);
 		}
 
@@ -364,16 +372,16 @@ public class BooleanArrayList implements IPrimativeBooleanList {
 	public boolean set(int index, boolean element) {
 		if (index < addPointer) {
 			try {
-				boolean old = data[index];
+				final boolean old = data[index];
 				data[index] = element;
 
 				return old; // RETURN
 
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 	}
 
@@ -385,14 +393,15 @@ public class BooleanArrayList implements IPrimativeBooleanList {
 		if (toIndex > addPointer || toIndex < fromIndex) {
 			throw new IndexOutOfBoundsException();
 		}
-		final int newSize = toIndex - fromIndex; 
+		final int newSize = toIndex - fromIndex;
 		final BooleanArrayList out = new BooleanArrayList();
 
 		try {
 			System.arraycopy(data, fromIndex, out.data, 0, newSize);
 			out.addPointer = newSize;
-		} catch (ArrayIndexOutOfBoundsException e) {
-			throw new IndexOutOfBoundsException(String.format("[%d %d)",fromIndex,toIndex));
+		} catch (final ArrayIndexOutOfBoundsException e) {
+			throw new IndexOutOfBoundsException(String.format("[%d %d)",
+					fromIndex, toIndex));
 		}
 
 		return out;

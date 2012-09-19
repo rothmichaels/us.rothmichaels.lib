@@ -37,30 +37,32 @@
  */
 package us.rothmichaels.lists;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import us.rothmichaels.lists.LongArrayList;
-
 /**
  * Unit Tests for {@link LongArrayList}
  * 
  * @author Roth Michaels (<i><a
- *		   href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
+ *         href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
  */
 public class LongArrayListTests {
 	static final int INITIAL_SIZE = 10;
 	static final int TEST_ADD_POINTER_LOC = 11;
 	static final int EXPANDED_INTERNAL_SIZE = 20;
-	static final long[] TEST_ARRAY = { 0L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L };
+	static final long[] TEST_ARRAY = { 0L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L,
+			10L };
 	static final long[] INTERNAL_TEST_ARRAY = new long[EXPANDED_INTERNAL_SIZE];
 	static {
 		System.arraycopy(TEST_ARRAY, 0, INTERNAL_TEST_ARRAY, 0,
@@ -150,7 +152,8 @@ public class LongArrayListTests {
 
 	@Test
 	public void insert() {
-		final long[] testArray = { 0L, 1L, 23L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L };
+		final long[] testArray = { 0L, 1L, 23L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L,
+				10L };
 		final long[] internalTestArray = new long[EXPANDED_INTERNAL_SIZE];
 		System.arraycopy(testArray, 0, internalTestArray, 0, testArray.length);
 
@@ -229,8 +232,8 @@ public class LongArrayListTests {
 
 		assertTrue(testList.addAll(
 				1,
-				Collections.unmodifiableList(Arrays.asList(new Long[] { 2L,
-						3L, 4L }))));
+				Collections.unmodifiableList(Arrays.asList(new Long[] { 2L, 3L,
+						4L }))));
 
 		assertEquals(10L, testList.data[0]);
 		assertEquals(2L, testList.data[1]);
@@ -245,9 +248,9 @@ public class LongArrayListTests {
 		try {
 			exceptionList.addAll(
 					-1,
-					Collections.unmodifiableList(Arrays.asList(new Long[] {
-							2L, 3L, 4L })));
-		} catch (ArrayIndexOutOfBoundsException e) {
+					Collections.unmodifiableList(Arrays.asList(new Long[] { 2L,
+							3L, 4L })));
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -258,9 +261,9 @@ public class LongArrayListTests {
 		try {
 			exceptionList.addAll(
 					6,
-					Collections.unmodifiableList(Arrays.asList(new Long[] {
-							2L, 3L, 4L })));
-		} catch (ArrayIndexOutOfBoundsException e) {
+					Collections.unmodifiableList(Arrays.asList(new Long[] { 2L,
+							3L, 4L })));
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -268,9 +271,9 @@ public class LongArrayListTests {
 
 	@Test
 	public void addAll() {
-		IPrimativeLongList longList = new LongArrayList();
-		longList.addAll(Collections.unmodifiableList(Arrays
-				.asList(new Long[] { 2L, 3L, 4L })));
+		final IPrimativeLongList longList = new LongArrayList();
+		longList.addAll(Collections.unmodifiableList(Arrays.asList(new Long[] {
+				2L, 3L, 4L })));
 
 		testList.add(1L);
 		assertTrue(testList.addAll(longList));
@@ -283,9 +286,9 @@ public class LongArrayListTests {
 
 	@Test
 	public void addAllAtIndex() {
-		IPrimativeLongList longList = new LongArrayList();
-		longList.addAll(Collections.unmodifiableList(Arrays
-				.asList(new Long[] { 2L, 3L, 4L })));
+		final IPrimativeLongList longList = new LongArrayList();
+		longList.addAll(Collections.unmodifiableList(Arrays.asList(new Long[] {
+				2L, 3L, 4L })));
 
 		testList.add(10L);
 		testList.add(10L);
@@ -302,13 +305,13 @@ public class LongArrayListTests {
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void addAllAtIndexBelow() {
-		IPrimativeLongList longList = new LongArrayList();
-		longList.addAll(Collections.unmodifiableList(Arrays
-				.asList(new Long[] { 2L, 3L, 4L })));
+		final IPrimativeLongList longList = new LongArrayList();
+		longList.addAll(Collections.unmodifiableList(Arrays.asList(new Long[] {
+				2L, 3L, 4L })));
 
 		try {
 			exceptionList.addAll(-1, longList);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -316,13 +319,13 @@ public class LongArrayListTests {
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void addAllAtIndexAbove() {
-		IPrimativeLongList longList = new LongArrayList();
-		longList.addAll(Collections.unmodifiableList(Arrays
-				.asList(new Long[] { 2L, 3L, 4L })));
+		final IPrimativeLongList longList = new LongArrayList();
+		longList.addAll(Collections.unmodifiableList(Arrays.asList(new Long[] {
+				2L, 3L, 4L })));
 
 		try {
 			exceptionList.addAll(6, longList);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -363,12 +366,12 @@ public class LongArrayListTests {
 		testList.add(4L);
 		testList.add(5L);
 
-		IPrimativeLongList expectTrue = new LongArrayList();
+		final IPrimativeLongList expectTrue = new LongArrayList();
 		expectTrue.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Long[] { 3L, 2L, 4L })));
 		assertTrue("contains true", testList.containsAll(expectTrue));
 
-		IPrimativeLongList expectFalse = new LongArrayList();
+		final IPrimativeLongList expectFalse = new LongArrayList();
 		expectFalse.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Long[] { 7L, 2L, 4L })));
 		assertFalse("contains false", testList.containsAll(expectFalse));
@@ -389,7 +392,7 @@ public class LongArrayListTests {
 	public void testGetBelow() {
 		try {
 			exceptionList.get(-1);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -399,7 +402,7 @@ public class LongArrayListTests {
 	public void testGetAbove() {
 		try {
 			exceptionList.get(6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -481,7 +484,7 @@ public class LongArrayListTests {
 	public void testRemoveBelow() {
 		try {
 			exceptionList.remove(-1);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -491,7 +494,7 @@ public class LongArrayListTests {
 	public void testRemoveAbove() {
 		try {
 			exceptionList.remove(6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 	}
@@ -545,7 +548,7 @@ public class LongArrayListTests {
 	public void testSetBelow() {
 		try {
 			exceptionList.set(-1, 6L);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -555,7 +558,7 @@ public class LongArrayListTests {
 	public void testSetAbove() {
 		try {
 			exceptionList.set(6, 100L);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -577,7 +580,7 @@ public class LongArrayListTests {
 	public void subListBelow() {
 		try {
 			exceptionList.subList(-1, 3);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -587,7 +590,7 @@ public class LongArrayListTests {
 	public void subListOutOfRange() {
 		try {
 			exceptionList.subList(0, 6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -597,7 +600,7 @@ public class LongArrayListTests {
 	public void subListToLessThanFrom() {
 		try {
 			exceptionList.subList(4, 2);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 

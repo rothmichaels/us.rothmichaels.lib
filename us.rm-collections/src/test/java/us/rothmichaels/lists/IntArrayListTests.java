@@ -37,24 +37,25 @@
  */
 package us.rothmichaels.lists;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import us.rothmichaels.lists.IntArrayList;
-
 /**
  * Unit Tests for {@link IntArrayList}
  * 
  * @author Roth Michaels (<i><a
- *		   href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
+ *         href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
  */
 public class IntArrayListTests {
 	static final int INITIAL_SIZE = 10;
@@ -107,8 +108,7 @@ public class IntArrayListTests {
 
 		// test initial internal array
 		assertEquals("internal addPointer", 0, testList.addPointer);
-		assertArrayEquals("internal array", new int[initialSize],
-				testList.data);
+		assertArrayEquals("internal array", new int[initialSize], testList.data);
 
 		// test initial output
 		// TODO move to other tests
@@ -247,7 +247,7 @@ public class IntArrayListTests {
 					-1,
 					Collections.unmodifiableList(Arrays.asList(new Integer[] {
 							2, 3, 4 })));
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -260,7 +260,7 @@ public class IntArrayListTests {
 					6,
 					Collections.unmodifiableList(Arrays.asList(new Integer[] {
 							2, 3, 4 })));
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -268,7 +268,7 @@ public class IntArrayListTests {
 
 	@Test
 	public void addAll() {
-		IPrimativeIntList intList = new IntArrayList();
+		final IPrimativeIntList intList = new IntArrayList();
 		intList.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Integer[] { 2, 3, 4 })));
 
@@ -283,7 +283,7 @@ public class IntArrayListTests {
 
 	@Test
 	public void addAllAtIndex() {
-		IPrimativeIntList intList = new IntArrayList();
+		final IPrimativeIntList intList = new IntArrayList();
 		intList.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Integer[] { 2, 3, 4 })));
 
@@ -302,13 +302,13 @@ public class IntArrayListTests {
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void addAllAtIndexBelow() {
-		IPrimativeIntList intList = new IntArrayList();
+		final IPrimativeIntList intList = new IntArrayList();
 		intList.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Integer[] { 2, 3, 4 })));
 
 		try {
 			exceptionList.addAll(-1, intList);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -316,13 +316,13 @@ public class IntArrayListTests {
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void addAllAtIndexAbove() {
-		IPrimativeIntList intList = new IntArrayList();
+		final IPrimativeIntList intList = new IntArrayList();
 		intList.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Integer[] { 2, 3, 4 })));
 
 		try {
 			exceptionList.addAll(6, intList);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -363,12 +363,12 @@ public class IntArrayListTests {
 		testList.add(4);
 		testList.add(5);
 
-		IPrimativeIntList expectTrue = new IntArrayList();
+		final IPrimativeIntList expectTrue = new IntArrayList();
 		expectTrue.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Integer[] { 3, 2, 4 })));
 		assertTrue("contains true", testList.containsAll(expectTrue));
 
-		IPrimativeIntList expectFalse = new IntArrayList();
+		final IPrimativeIntList expectFalse = new IntArrayList();
 		expectFalse.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Integer[] { 7, 2, 4 })));
 		assertFalse("contains false", testList.containsAll(expectFalse));
@@ -389,7 +389,7 @@ public class IntArrayListTests {
 	public void testGetBelow() {
 		try {
 			exceptionList.get(-1);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -399,7 +399,7 @@ public class IntArrayListTests {
 	public void testGetAbove() {
 		try {
 			exceptionList.get(6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -481,7 +481,7 @@ public class IntArrayListTests {
 	public void testRemoveBelow() {
 		try {
 			exceptionList.remove(-1);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -491,7 +491,7 @@ public class IntArrayListTests {
 	public void testRemoveAbove() {
 		try {
 			exceptionList.remove(6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 	}
@@ -537,15 +537,14 @@ public class IntArrayListTests {
 
 		assertEquals(3, testList.set(2, 10));
 
-		assertArrayEquals(new int[] { 1, 2, 10, 4, 5 },
-				testList.toArray());
+		assertArrayEquals(new int[] { 1, 2, 10, 4, 5 }, testList.toArray());
 	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void testSetBelow() {
 		try {
 			exceptionList.set(-1, 6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -555,7 +554,7 @@ public class IntArrayListTests {
 	public void testSetAbove() {
 		try {
 			exceptionList.set(6, 100);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -577,7 +576,7 @@ public class IntArrayListTests {
 	public void subListBelow() {
 		try {
 			exceptionList.subList(-1, 3);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -587,7 +586,7 @@ public class IntArrayListTests {
 	public void subListOutOfRange() {
 		try {
 			exceptionList.subList(0, 6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -597,7 +596,7 @@ public class IntArrayListTests {
 	public void subListToLessThanFrom() {
 		try {
 			exceptionList.subList(4, 2);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 

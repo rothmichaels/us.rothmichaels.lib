@@ -42,9 +42,10 @@ import java.util.Collection;
 
 /**
  * An {@link java.util.ArrayList}-like structure for storing primative longs.
- *
- * @author Roth Michaels (<i><a href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
- *
+ * 
+ * @author Roth Michaels (<i><a
+ *         href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
+ * 
  */
 public class LongArrayList implements IPrimativeLongList {
 
@@ -61,7 +62,8 @@ public class LongArrayList implements IPrimativeLongList {
 	/**
 	 * Create an empty LongArrayList with arbitrary size
 	 * 
-	 * @param initialSize Initial size
+	 * @param initialSize
+	 *            Initial size
 	 */
 	public LongArrayList(int initialSize) {
 		data = new long[initialSize];
@@ -74,8 +76,8 @@ public class LongArrayList implements IPrimativeLongList {
 	public boolean add(long f) {
 		// if array is full, double the size
 		if (addPointer >= data.length) {
-			long tmp[] = data;
-			data = new long[tmp.length*2];
+			final long tmp[] = data;
+			data = new long[tmp.length * 2];
 			System.arraycopy(tmp, 0, data, 0, tmp.length);
 		}
 		data[addPointer++] = f;
@@ -91,19 +93,20 @@ public class LongArrayList implements IPrimativeLongList {
 		if (index < addPointer) {
 			// if array is full, double the size
 			if (addPointer >= data.length) {
-				long tmp[] = data;
-				data = new long[tmp.length*2];
+				final long tmp[] = data;
+				data = new long[tmp.length * 2];
 				System.arraycopy(tmp, 0, data, 0, tmp.length);
 			}
 			try {
-				System.arraycopy(data, index, data, index+1, addPointer-index);
+				System.arraycopy(data, index, data, index + 1, addPointer
+						- index);
 				data[index] = f;
 				++addPointer;
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 	}
 
@@ -129,7 +132,7 @@ public class LongArrayList implements IPrimativeLongList {
 	 */
 	@Override
 	public final long[] toArray() {
-		long out[] = new long[addPointer];
+		final long out[] = new long[addPointer];
 		System.arraycopy(data, 0, out, 0, addPointer);
 		return out;
 	}
@@ -139,23 +142,24 @@ public class LongArrayList implements IPrimativeLongList {
 	 */
 	@Override
 	public boolean addAll(Collection<Long> c) {
-		for (Long f : c) {
+		for (final Long f : c) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeLongList#addAll(int, java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#addAll(int,
+	 *      java.util.Collection)
 	 */
 	@Override
 	public boolean addAll(int index, Collection<Long> c) {
 		if (index < addPointer) {
-			for (long value : c) {
+			for (final long value : c) {
 				add(index++, value);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -166,25 +170,26 @@ public class LongArrayList implements IPrimativeLongList {
 	 */
 	@Override
 	public boolean addAll(IPrimativeLongList l) {
-		long[] a = l.toArray();
-		for (long f : a) {
+		final long[] a = l.toArray();
+		for (final long f : a) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeLongList#addAll(int, us.rothmichaels.lists.IPrimativeLongList)
+	 * @see us.rothmichaels.lists.IPrimativeLongList#addAll(int,
+	 *      us.rothmichaels.lists.IPrimativeLongList)
 	 */
 	@Override
 	public boolean addAll(int index, IPrimativeLongList l) {
 		if (index < addPointer) {
-			long[] a = l.toArray();
-			for (long value : a) {
+			final long[] a = l.toArray();
+			for (final long value : a) {
 				add(index++, value);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -197,7 +202,7 @@ public class LongArrayList implements IPrimativeLongList {
 	public boolean contains(long value) {
 		boolean r = false;
 
-		for (long val : data) {
+		for (final long val : data) {
 			r |= (val == value);
 		}
 
@@ -209,9 +214,9 @@ public class LongArrayList implements IPrimativeLongList {
 	 */
 	@Override
 	public boolean containsAll(Collection<Long> c) {
-		for (long value : c) {
+		for (final long value : c) {
 			boolean b = false;
-			for (long val : data) {
+			for (final long val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -227,11 +232,11 @@ public class LongArrayList implements IPrimativeLongList {
 	 */
 	@Override
 	public boolean containsAll(IPrimativeLongList c) {
-		long[] a = c.toArray();
+		final long[] a = c.toArray();
 
-		for (long value : a) {
+		for (final long value : a) {
 			boolean b = false;
-			for (long val : data) {
+			for (final long val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -249,19 +254,20 @@ public class LongArrayList implements IPrimativeLongList {
 	public long get(int index) {
 		if (index < addPointer) {
 			try {
-				return data[index];				
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+				return data[index];
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 	}
 
 	/**
 	 * @see us.rothmichaels.lists.IPrimativeLongList#indexOf(long)
-	 * @throws IllegalArgumentException if input does not exist in list
+	 * @throws IllegalArgumentException
+	 *             if input does not exist in list
 	 */
 	@Override
 	public int indexOf(long i) throws IllegalArgumentException {
@@ -284,11 +290,12 @@ public class LongArrayList implements IPrimativeLongList {
 
 	/**
 	 * @see us.rothmichaels.lists.IPrimativeLongList#lastIndexOf(long)
-	 * @throws IllegalArgumentException if input does not exist in list
+	 * @throws IllegalArgumentException
+	 *             if input does not exist in list
 	 */
 	@Override
 	public int lastIndexOf(long value) throws IllegalArgumentException {
-		for (int j = data.length-1; j >= 0 ; --j) {
+		for (int j = data.length - 1; j >= 0; --j) {
 			if (data[j] == value) {
 				return j;
 			}
@@ -318,13 +325,14 @@ public class LongArrayList implements IPrimativeLongList {
 	public boolean remove(int index) {
 		if (index < addPointer) {
 			try {
-				System.arraycopy(data, index+1, data, index, addPointer-index);
+				System.arraycopy(data, index + 1, data, index, addPointer
+						- index);
 				--addPointer;
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -336,7 +344,7 @@ public class LongArrayList implements IPrimativeLongList {
 	@Override
 	public boolean removeAll(Collection<Long> c) {
 		boolean r = false;
-		for (long value : c) {
+		for (final long value : c) {
 			r |= removeValue(value);
 		}
 
@@ -364,16 +372,16 @@ public class LongArrayList implements IPrimativeLongList {
 	public long set(int index, long element) {
 		if (index < addPointer) {
 			try {
-				long old = data[index];
+				final long old = data[index];
 				data[index] = element;
 
 				return old; // RETURN
 
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 	}
 
@@ -385,14 +393,15 @@ public class LongArrayList implements IPrimativeLongList {
 		if (toIndex > addPointer || toIndex < fromIndex) {
 			throw new IndexOutOfBoundsException();
 		}
-		final int newSize = toIndex - fromIndex; 
+		final int newSize = toIndex - fromIndex;
 		final LongArrayList out = new LongArrayList();
 
 		try {
 			System.arraycopy(data, fromIndex, out.data, 0, newSize);
 			out.addPointer = newSize;
-		} catch (ArrayIndexOutOfBoundsException e) {
-			throw new IndexOutOfBoundsException(String.format("[%d %d)",fromIndex,toIndex));
+		} catch (final ArrayIndexOutOfBoundsException e) {
+			throw new IndexOutOfBoundsException(String.format("[%d %d)",
+					fromIndex, toIndex));
 		}
 
 		return out;

@@ -37,7 +37,7 @@
  */
 package us.rothmichaels.maps;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertSame;
 
 import org.junit.Test;
 
@@ -56,13 +56,13 @@ public class EasyEnumMapTests {
 
 	@Test
 	public void test() {
-		Object o1 = new Object();
-		Object o2 = new Object();
-		EasyEnumMap<TestEnum, Object> testMap = new EasyEnumMap<TestEnum, Object>(
+		final Object o1 = new Object();
+		final Object o2 = new Object();
+		final EasyEnumMap<TestEnum, Object> testMap = new EasyEnumMap<TestEnum, Object>(
 				TestEnum.class);
-		
+
 		testMap.p(TestEnum.O1, o1).p(TestEnum.O2, o2);
-		
+
 		assertSame(o1, testMap.get(TestEnum.O1));
 		assertSame(o2, testMap.get(TestEnum.O2));
 	}

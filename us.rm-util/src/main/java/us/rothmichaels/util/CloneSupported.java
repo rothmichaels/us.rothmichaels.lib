@@ -39,13 +39,14 @@
 package us.rothmichaels.util;
 
 /**
- * An interface to be implemented by {@link java.lang.Cloneable} classes
- * to be sure they implement a public {@link java.lang.Object#clone()}
- * method.
- *
- * @author Roth Michaels (<i><a href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
- *
- * @param <T> type implmementing this interface
+ * An interface to be implemented by {@link java.lang.Cloneable} classes to be
+ * sure they implement a public {@link java.lang.Object#clone()} method.
+ * 
+ * @author Roth Michaels (<i><a
+ *         href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
+ * 
+ * @param <T>
+ *            type implmementing this interface
  */
 public interface CloneSupported<T> extends Cloneable {
 	/**

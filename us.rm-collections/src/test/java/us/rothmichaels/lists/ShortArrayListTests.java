@@ -37,30 +37,33 @@
  */
 package us.rothmichaels.lists;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import us.rothmichaels.lists.ShortArrayList;
-
 /**
  * Unit Tests for {@link ShortArrayList}
  * 
  * @author Roth Michaels (<i><a
- *		   href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
+ *         href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
  */
 public class ShortArrayListTests {
 	static final int INITIAL_SIZE = 10;
 	static final int TEST_ADD_POINTER_LOC = 11;
 	static final int EXPANDED_INTERNAL_SIZE = 20;
-	static final short[] TEST_ARRAY = { (short) 0, (short) 1, (short) 2, (short) 3, (short) 4, (short) 5, (short) 6, (short) 7, (short) 8, (short) 9, (short) 10 };
+	static final short[] TEST_ARRAY = { (short) 0, (short) 1, (short) 2,
+			(short) 3, (short) 4, (short) 5, (short) 6, (short) 7, (short) 8,
+			(short) 9, (short) 10 };
 	static final short[] INTERNAL_TEST_ARRAY = new short[EXPANDED_INTERNAL_SIZE];
 	static {
 		System.arraycopy(TEST_ARRAY, 0, INTERNAL_TEST_ARRAY, 0,
@@ -150,7 +153,9 @@ public class ShortArrayListTests {
 
 	@Test
 	public void insert() {
-		final short[] testArray = { (short) 0, (short) 1, (short) 23, (short) 2, (short) 3, (short) 4, (short) 5, (short) 6, (short) 7, (short) 8, (short) 9, (short) 10 };
+		final short[] testArray = { (short) 0, (short) 1, (short) 23,
+				(short) 2, (short) 3, (short) 4, (short) 5, (short) 6,
+				(short) 7, (short) 8, (short) 9, (short) 10 };
 		final short[] internalTestArray = new short[EXPANDED_INTERNAL_SIZE];
 		System.arraycopy(testArray, 0, internalTestArray, 0, testArray.length);
 
@@ -163,7 +168,8 @@ public class ShortArrayListTests {
 		assertArrayEquals("internal array", internalTestArray, testList.data);
 
 		// test output
-		assertEquals("output size", TEST_ADD_POINTER_LOC + (short) 1, testList.size());
+		assertEquals("output size", TEST_ADD_POINTER_LOC + (short) 1,
+				testList.size());
 		assertArrayEquals("output array", testArray, testList.toArray());
 	}
 
@@ -205,7 +211,8 @@ public class ShortArrayListTests {
 		testList.add((short) 2);
 		testList.add((short) 3);
 
-		assertArrayEquals(new short[] { (short) 2, (short) 3 }, testList.toArray());
+		assertArrayEquals(new short[] { (short) 2, (short) 3 },
+				testList.toArray());
 	}
 
 	@Test
@@ -229,8 +236,8 @@ public class ShortArrayListTests {
 
 		assertTrue(testList.addAll(
 				1,
-				Collections.unmodifiableList(Arrays.asList(new Short[] { (short) 2,
-						(short) 3, (short) 4 }))));
+				Collections.unmodifiableList(Arrays.asList(new Short[] {
+						(short) 2, (short) 3, (short) 4 }))));
 
 		assertEquals((short) 10, testList.data[0]);
 		assertEquals((short) 2, testList.data[1]);
@@ -247,7 +254,7 @@ public class ShortArrayListTests {
 					-1,
 					Collections.unmodifiableList(Arrays.asList(new Short[] {
 							(short) 2, (short) 3, (short) 4 })));
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -260,7 +267,7 @@ public class ShortArrayListTests {
 					6,
 					Collections.unmodifiableList(Arrays.asList(new Short[] {
 							(short) 2, (short) 3, (short) 4 })));
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -268,7 +275,7 @@ public class ShortArrayListTests {
 
 	@Test
 	public void addAll() {
-		IPrimativeShortList shortList = new ShortArrayList();
+		final IPrimativeShortList shortList = new ShortArrayList();
 		shortList.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Short[] { (short) 2, (short) 3, (short) 4 })));
 
@@ -283,7 +290,7 @@ public class ShortArrayListTests {
 
 	@Test
 	public void addAllAtIndex() {
-		IPrimativeShortList shortList = new ShortArrayList();
+		final IPrimativeShortList shortList = new ShortArrayList();
 		shortList.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Short[] { (short) 2, (short) 3, (short) 4 })));
 
@@ -302,13 +309,13 @@ public class ShortArrayListTests {
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void addAllAtIndexBelow() {
-		IPrimativeShortList shortList = new ShortArrayList();
+		final IPrimativeShortList shortList = new ShortArrayList();
 		shortList.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Short[] { (short) 2, (short) 3, (short) 4 })));
 
 		try {
 			exceptionList.addAll(-1, shortList);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -316,13 +323,13 @@ public class ShortArrayListTests {
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void addAllAtIndexAbove() {
-		IPrimativeShortList shortList = new ShortArrayList();
+		final IPrimativeShortList shortList = new ShortArrayList();
 		shortList.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Short[] { (short) 2, (short) 3, (short) 4 })));
 
 		try {
 			exceptionList.addAll(6, shortList);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -349,10 +356,12 @@ public class ShortArrayListTests {
 		testList.add((short) 5);
 
 		assertTrue("contains true", testList.containsAll(Collections
-				.unmodifiableList(Arrays.asList(new Short[] { (short) 3, (short) 2, (short) 4 }))));
+				.unmodifiableList(Arrays.asList(new Short[] { (short) 3,
+						(short) 2, (short) 4 }))));
 
 		assertFalse("contains false", testList.containsAll(Collections
-				.unmodifiableList(Arrays.asList(new Short[] { (short) 7, (short) 3, (short) 4 }))));
+				.unmodifiableList(Arrays.asList(new Short[] { (short) 7,
+						(short) 3, (short) 4 }))));
 	}
 
 	@Test
@@ -363,12 +372,12 @@ public class ShortArrayListTests {
 		testList.add((short) 4);
 		testList.add((short) 5);
 
-		IPrimativeShortList expectTrue = new ShortArrayList();
+		final IPrimativeShortList expectTrue = new ShortArrayList();
 		expectTrue.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Short[] { (short) 3, (short) 2, (short) 4 })));
 		assertTrue("contains true", testList.containsAll(expectTrue));
 
-		IPrimativeShortList expectFalse = new ShortArrayList();
+		final IPrimativeShortList expectFalse = new ShortArrayList();
 		expectFalse.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Short[] { (short) 7, (short) 2, (short) 4 })));
 		assertFalse("contains false", testList.containsAll(expectFalse));
@@ -389,7 +398,7 @@ public class ShortArrayListTests {
 	public void testGetBelow() {
 		try {
 			exceptionList.get(-1);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -399,7 +408,7 @@ public class ShortArrayListTests {
 	public void testGetAbove() {
 		try {
 			exceptionList.get(6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -460,7 +469,8 @@ public class ShortArrayListTests {
 		assertFalse(testList.removeValue((short) -4));
 		assertTrue(testList.removeValue((short) 3));
 
-		assertArrayEquals(new short[] { (short) 1, (short) 2, (short) 3, (short) 5 }, testList.toArray());
+		assertArrayEquals(new short[] { (short) 1, (short) 2, (short) 3,
+				(short) 5 }, testList.toArray());
 	}
 
 	@Test
@@ -474,14 +484,15 @@ public class ShortArrayListTests {
 		assertTrue(testList.remove(2));
 
 		assertEquals((short) 4, testList.addPointer);
-		assertArrayEquals(new short[] { (short) 1, (short) 2, (short) 3, (short) 5 }, testList.toArray());
+		assertArrayEquals(new short[] { (short) 1, (short) 2, (short) 3,
+				(short) 5 }, testList.toArray());
 	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void testRemoveBelow() {
 		try {
 			exceptionList.remove(-1);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -491,7 +502,7 @@ public class ShortArrayListTests {
 	public void testRemoveAbove() {
 		try {
 			exceptionList.remove(6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 	}
@@ -510,7 +521,8 @@ public class ShortArrayListTests {
 		assertTrue(testList.removeAll(Collections.unmodifiableList(Arrays
 				.asList(new Short[] { (short) 2, (short) 3, (short) 4 }))));
 
-		assertArrayEquals(new short[] { (short) 1, (short) 5 }, testList.toArray());
+		assertArrayEquals(new short[] { (short) 1, (short) 5 },
+				testList.toArray());
 	}
 
 	@Test
@@ -524,7 +536,8 @@ public class ShortArrayListTests {
 		assertTrue(testList.retainAll(Collections.unmodifiableList(Arrays
 				.asList(new Short[] { (short) 2, (short) 3, (short) 4 }))));
 
-		assertArrayEquals(new short[] { (short) 2, (short) 3, (short) 4 }, testList.toArray());
+		assertArrayEquals(new short[] { (short) 2, (short) 3, (short) 4 },
+				testList.toArray());
 	}
 
 	@Test
@@ -537,15 +550,15 @@ public class ShortArrayListTests {
 
 		assertEquals((short) 3, testList.set(2, (short) 10));
 
-		assertArrayEquals(new short[] { (short) 1, (short) 2, (short) 10, (short) 4, (short) 5 },
-				testList.toArray());
+		assertArrayEquals(new short[] { (short) 1, (short) 2, (short) 10,
+				(short) 4, (short) 5 }, testList.toArray());
 	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void testSetBelow() {
 		try {
 			exceptionList.set(-1, (short) 6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -555,7 +568,7 @@ public class ShortArrayListTests {
 	public void testSetAbove() {
 		try {
 			exceptionList.set(6, (short) 100);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -569,15 +582,15 @@ public class ShortArrayListTests {
 		testList.add((short) 4);
 		testList.add((short) 5);
 
-		assertArrayEquals(new short[] { (short) 2, (short) 3, (short) 4 }, testList.subList(1, 4)
-				.toArray());
+		assertArrayEquals(new short[] { (short) 2, (short) 3, (short) 4 },
+				testList.subList(1, 4).toArray());
 	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void subListBelow() {
 		try {
 			exceptionList.subList(-1, 3);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -587,7 +600,7 @@ public class ShortArrayListTests {
 	public void subListOutOfRange() {
 		try {
 			exceptionList.subList(0, 6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -597,7 +610,7 @@ public class ShortArrayListTests {
 	public void subListToLessThanFrom() {
 		try {
 			exceptionList.subList(4, 2);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 

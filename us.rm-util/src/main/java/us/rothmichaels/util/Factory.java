@@ -39,22 +39,25 @@ package us.rothmichaels.util;
 
 /**
  * Defines an interface for a class constructing factory.
- *
- * @author Roth Michaels (<i><a href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
- *
- * @param <T> type to construct with the factory.
+ * 
+ * @author Roth Michaels (<i><a
+ *         href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
+ * 
+ * @param <T>
+ *            type to construct with the factory.
  */
 public interface Factory<T> {
-	
+
 	/**
 	 * Get class of type {@code T}
+	 * 
 	 * @return the class type to construct
 	 */
 	Class<T> getFactoryClass();
-	
+
 	/**
 	 * Construct an object of type {@code T}.
-	 *
+	 * 
 	 * @return New object of class typed by Factory
 	 */
 	T construct();

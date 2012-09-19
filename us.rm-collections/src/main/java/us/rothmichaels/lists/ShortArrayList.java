@@ -42,9 +42,10 @@ import java.util.Collection;
 
 /**
  * An {@link java.util.ArrayList}-like structure for storing primative shorts.
- *
- * @author Roth Michaels (<i><a href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
- *
+ * 
+ * @author Roth Michaels (<i><a
+ *         href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
+ * 
  */
 public class ShortArrayList implements IPrimativeShortList {
 
@@ -61,7 +62,8 @@ public class ShortArrayList implements IPrimativeShortList {
 	/**
 	 * Create an empty ShortArrayList with arbitrary size
 	 * 
-	 * @param initialSize Initial size
+	 * @param initialSize
+	 *            Initial size
 	 */
 	public ShortArrayList(int initialSize) {
 		data = new short[initialSize];
@@ -74,8 +76,8 @@ public class ShortArrayList implements IPrimativeShortList {
 	public boolean add(short f) {
 		// if array is full, double the size
 		if (addPointer >= data.length) {
-			short tmp[] = data;
-			data = new short[tmp.length*2];
+			final short tmp[] = data;
+			data = new short[tmp.length * 2];
 			System.arraycopy(tmp, 0, data, 0, tmp.length);
 		}
 		data[addPointer++] = f;
@@ -91,19 +93,20 @@ public class ShortArrayList implements IPrimativeShortList {
 		if (index < addPointer) {
 			// if array is full, double the size
 			if (addPointer >= data.length) {
-				short tmp[] = data;
-				data = new short[tmp.length*2];
+				final short tmp[] = data;
+				data = new short[tmp.length * 2];
 				System.arraycopy(tmp, 0, data, 0, tmp.length);
 			}
 			try {
-				System.arraycopy(data, index, data, index+1, addPointer-index);
+				System.arraycopy(data, index, data, index + 1, addPointer
+						- index);
 				data[index] = f;
 				++addPointer;
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 	}
 
@@ -129,7 +132,7 @@ public class ShortArrayList implements IPrimativeShortList {
 	 */
 	@Override
 	public final short[] toArray() {
-		short out[] = new short[addPointer];
+		final short out[] = new short[addPointer];
 		System.arraycopy(data, 0, out, 0, addPointer);
 		return out;
 	}
@@ -139,23 +142,24 @@ public class ShortArrayList implements IPrimativeShortList {
 	 */
 	@Override
 	public boolean addAll(Collection<Short> c) {
-		for (Short f : c) {
+		for (final Short f : c) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeShortList#addAll(int, java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeShortList#addAll(int,
+	 *      java.util.Collection)
 	 */
 	@Override
 	public boolean addAll(int index, Collection<Short> c) {
 		if (index < addPointer) {
-			for (short value : c) {
+			for (final short value : c) {
 				add(index++, value);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -166,25 +170,26 @@ public class ShortArrayList implements IPrimativeShortList {
 	 */
 	@Override
 	public boolean addAll(IPrimativeShortList l) {
-		short[] a = l.toArray();
-		for (short f : a) {
+		final short[] a = l.toArray();
+		for (final short f : a) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeShortList#addAll(int, us.rothmichaels.lists.IPrimativeShortList)
+	 * @see us.rothmichaels.lists.IPrimativeShortList#addAll(int,
+	 *      us.rothmichaels.lists.IPrimativeShortList)
 	 */
 	@Override
 	public boolean addAll(int index, IPrimativeShortList l) {
 		if (index < addPointer) {
-			short[] a = l.toArray();
-			for (short value : a) {
+			final short[] a = l.toArray();
+			for (final short value : a) {
 				add(index++, value);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -197,7 +202,7 @@ public class ShortArrayList implements IPrimativeShortList {
 	public boolean contains(short value) {
 		boolean r = false;
 
-		for (short val : data) {
+		for (final short val : data) {
 			r |= (val == value);
 		}
 
@@ -209,9 +214,9 @@ public class ShortArrayList implements IPrimativeShortList {
 	 */
 	@Override
 	public boolean containsAll(Collection<Short> c) {
-		for (short value : c) {
+		for (final short value : c) {
 			boolean b = false;
-			for (short val : data) {
+			for (final short val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -227,11 +232,11 @@ public class ShortArrayList implements IPrimativeShortList {
 	 */
 	@Override
 	public boolean containsAll(IPrimativeShortList c) {
-		short[] a = c.toArray();
+		final short[] a = c.toArray();
 
-		for (short value : a) {
+		for (final short value : a) {
 			boolean b = false;
-			for (short val : data) {
+			for (final short val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -249,19 +254,20 @@ public class ShortArrayList implements IPrimativeShortList {
 	public short get(int index) {
 		if (index < addPointer) {
 			try {
-				return data[index];				
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+				return data[index];
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 	}
 
 	/**
 	 * @see us.rothmichaels.lists.IPrimativeShortList#indexOf(short)
-	 * @throws IllegalArgumentException if input does not exist in list
+	 * @throws IllegalArgumentException
+	 *             if input does not exist in list
 	 */
 	@Override
 	public int indexOf(short i) throws IllegalArgumentException {
@@ -284,11 +290,12 @@ public class ShortArrayList implements IPrimativeShortList {
 
 	/**
 	 * @see us.rothmichaels.lists.IPrimativeShortList#lastIndexOf(short)
-	 * @throws IllegalArgumentException if input does not exist in list
+	 * @throws IllegalArgumentException
+	 *             if input does not exist in list
 	 */
 	@Override
 	public int lastIndexOf(short value) throws IllegalArgumentException {
-		for (int j = data.length-1; j >= 0 ; --j) {
+		for (int j = data.length - 1; j >= 0; --j) {
 			if (data[j] == value) {
 				return j;
 			}
@@ -318,13 +325,14 @@ public class ShortArrayList implements IPrimativeShortList {
 	public boolean remove(int index) {
 		if (index < addPointer) {
 			try {
-				System.arraycopy(data, index+1, data, index, addPointer-index);
+				System.arraycopy(data, index + 1, data, index, addPointer
+						- index);
 				--addPointer;
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -336,7 +344,7 @@ public class ShortArrayList implements IPrimativeShortList {
 	@Override
 	public boolean removeAll(Collection<Short> c) {
 		boolean r = false;
-		for (short value : c) {
+		for (final short value : c) {
 			r |= removeValue(value);
 		}
 
@@ -364,16 +372,16 @@ public class ShortArrayList implements IPrimativeShortList {
 	public short set(int index, short element) {
 		if (index < addPointer) {
 			try {
-				short old = data[index];
+				final short old = data[index];
 				data[index] = element;
 
 				return old; // RETURN
 
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 	}
 
@@ -385,14 +393,15 @@ public class ShortArrayList implements IPrimativeShortList {
 		if (toIndex > addPointer || toIndex < fromIndex) {
 			throw new IndexOutOfBoundsException();
 		}
-		final int newSize = toIndex - fromIndex; 
+		final int newSize = toIndex - fromIndex;
 		final ShortArrayList out = new ShortArrayList();
 
 		try {
 			System.arraycopy(data, fromIndex, out.data, 0, newSize);
 			out.addPointer = newSize;
-		} catch (ArrayIndexOutOfBoundsException e) {
-			throw new IndexOutOfBoundsException(String.format("[%d %d)",fromIndex,toIndex));
+		} catch (final ArrayIndexOutOfBoundsException e) {
+			throw new IndexOutOfBoundsException(String.format("[%d %d)",
+					fromIndex, toIndex));
 		}
 
 		return out;

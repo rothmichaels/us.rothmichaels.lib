@@ -42,9 +42,10 @@ import java.util.Collection;
 
 /**
  * An {@link java.util.ArrayList}-like structure for storing primative chars.
- *
- * @author Roth Michaels (<i><a href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
- *
+ * 
+ * @author Roth Michaels (<i><a
+ *         href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
+ * 
  */
 public class CharArrayList implements IPrimativeCharList {
 
@@ -61,7 +62,8 @@ public class CharArrayList implements IPrimativeCharList {
 	/**
 	 * Create an empty CharacterArrayList with arbitrary size
 	 * 
-	 * @param initialSize Initial size
+	 * @param initialSize
+	 *            Initial size
 	 */
 	public CharArrayList(int initialSize) {
 		data = new char[initialSize];
@@ -74,8 +76,8 @@ public class CharArrayList implements IPrimativeCharList {
 	public boolean add(char f) {
 		// if array is full, double the size
 		if (addPointer >= data.length) {
-			char tmp[] = data;
-			data = new char[tmp.length*2];
+			final char tmp[] = data;
+			data = new char[tmp.length * 2];
 			System.arraycopy(tmp, 0, data, 0, tmp.length);
 		}
 		data[addPointer++] = f;
@@ -91,19 +93,20 @@ public class CharArrayList implements IPrimativeCharList {
 		if (index < addPointer) {
 			// if array is full, double the size
 			if (addPointer >= data.length) {
-				char tmp[] = data;
-				data = new char[tmp.length*2];
+				final char tmp[] = data;
+				data = new char[tmp.length * 2];
 				System.arraycopy(tmp, 0, data, 0, tmp.length);
 			}
 			try {
-				System.arraycopy(data, index, data, index+1, addPointer-index);
+				System.arraycopy(data, index, data, index + 1, addPointer
+						- index);
 				data[index] = f;
 				++addPointer;
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 	}
 
@@ -129,7 +132,7 @@ public class CharArrayList implements IPrimativeCharList {
 	 */
 	@Override
 	public final char[] toArray() {
-		char out[] = new char[addPointer];
+		final char out[] = new char[addPointer];
 		System.arraycopy(data, 0, out, 0, addPointer);
 		return out;
 	}
@@ -139,23 +142,24 @@ public class CharArrayList implements IPrimativeCharList {
 	 */
 	@Override
 	public boolean addAll(Collection<Character> c) {
-		for (Character f : c) {
+		for (final Character f : c) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharList#addAll(int, java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#addAll(int,
+	 *      java.util.Collection)
 	 */
 	@Override
 	public boolean addAll(int index, Collection<Character> c) {
 		if (index < addPointer) {
-			for (char value : c) {
+			for (final char value : c) {
 				add(index++, value);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -166,25 +170,26 @@ public class CharArrayList implements IPrimativeCharList {
 	 */
 	@Override
 	public boolean addAll(IPrimativeCharList l) {
-		char[] a = l.toArray();
-		for (char f : a) {
+		final char[] a = l.toArray();
+		for (final char f : a) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharList#addAll(int, us.rothmichaels.lists.IPrimativeCharList)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#addAll(int,
+	 *      us.rothmichaels.lists.IPrimativeCharList)
 	 */
 	@Override
 	public boolean addAll(int index, IPrimativeCharList l) {
 		if (index < addPointer) {
-			char[] a = l.toArray();
-			for (char value : a) {
+			final char[] a = l.toArray();
+			for (final char value : a) {
 				add(index++, value);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -197,7 +202,7 @@ public class CharArrayList implements IPrimativeCharList {
 	public boolean contains(char value) {
 		boolean r = false;
 
-		for (char val : data) {
+		for (final char val : data) {
 			r |= (val == value);
 		}
 
@@ -209,9 +214,9 @@ public class CharArrayList implements IPrimativeCharList {
 	 */
 	@Override
 	public boolean containsAll(Collection<Character> c) {
-		for (char value : c) {
+		for (final char value : c) {
 			boolean b = false;
-			for (char val : data) {
+			for (final char val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -227,11 +232,11 @@ public class CharArrayList implements IPrimativeCharList {
 	 */
 	@Override
 	public boolean containsAll(IPrimativeCharList c) {
-		char[] a = c.toArray();
+		final char[] a = c.toArray();
 
-		for (char value : a) {
+		for (final char value : a) {
 			boolean b = false;
-			for (char val : data) {
+			for (final char val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -249,19 +254,20 @@ public class CharArrayList implements IPrimativeCharList {
 	public char get(int index) {
 		if (index < addPointer) {
 			try {
-				return data[index];				
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+				return data[index];
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 	}
 
 	/**
 	 * @see us.rothmichaels.lists.IPrimativeCharList#indexOf(char)
-	 * @throws IllegalArgumentException if input does not exist in list
+	 * @throws IllegalArgumentException
+	 *             if input does not exist in list
 	 */
 	@Override
 	public int indexOf(char i) throws IllegalArgumentException {
@@ -284,11 +290,12 @@ public class CharArrayList implements IPrimativeCharList {
 
 	/**
 	 * @see us.rothmichaels.lists.IPrimativeCharList#lastIndexOf(char)
-	 * @throws IllegalArgumentException if input does not exist in list
+	 * @throws IllegalArgumentException
+	 *             if input does not exist in list
 	 */
 	@Override
 	public int lastIndexOf(char value) throws IllegalArgumentException {
-		for (int j = data.length-1; j >= 0 ; --j) {
+		for (int j = data.length - 1; j >= 0; --j) {
 			if (data[j] == value) {
 				return j;
 			}
@@ -318,13 +325,14 @@ public class CharArrayList implements IPrimativeCharList {
 	public boolean remove(int index) {
 		if (index < addPointer) {
 			try {
-				System.arraycopy(data, index+1, data, index, addPointer-index);
+				System.arraycopy(data, index + 1, data, index, addPointer
+						- index);
 				--addPointer;
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -336,7 +344,7 @@ public class CharArrayList implements IPrimativeCharList {
 	@Override
 	public boolean removeAll(Collection<Character> c) {
 		boolean r = false;
-		for (char value : c) {
+		for (final char value : c) {
 			r |= removeValue(value);
 		}
 
@@ -364,16 +372,16 @@ public class CharArrayList implements IPrimativeCharList {
 	public char set(int index, char element) {
 		if (index < addPointer) {
 			try {
-				char old = data[index];
+				final char old = data[index];
 				data[index] = element;
 
 				return old; // RETURN
 
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 	}
 
@@ -385,14 +393,15 @@ public class CharArrayList implements IPrimativeCharList {
 		if (toIndex > addPointer || toIndex < fromIndex) {
 			throw new IndexOutOfBoundsException();
 		}
-		final int newSize = toIndex - fromIndex; 
+		final int newSize = toIndex - fromIndex;
 		final CharArrayList out = new CharArrayList();
 
 		try {
 			System.arraycopy(data, fromIndex, out.data, 0, newSize);
 			out.addPointer = newSize;
-		} catch (ArrayIndexOutOfBoundsException e) {
-			throw new IndexOutOfBoundsException(String.format("[%d %d)",fromIndex,toIndex));
+		} catch (final ArrayIndexOutOfBoundsException e) {
+			throw new IndexOutOfBoundsException(String.format("[%d %d)",
+					fromIndex, toIndex));
 		}
 
 		return out;

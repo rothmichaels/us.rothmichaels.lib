@@ -37,25 +37,25 @@
  */
 package us.rothmichaels.util;
 
-import static org.junit.Assert.*;
-
-import us.rothmichaels.util.ArrayBuilder;
-import us.rothmichaels.util.Factory;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
- *
- *
- * @author Roth Michaels (<i><a href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
- *
+ * 
+ * 
+ * @author Roth Michaels (<i><a
+ *         href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
+ * 
  */
 public class ArrayBuilderTests {
 
 	static final int TEST_SIZE = 10;
-	
+
 	/**
 	 * @throws java.lang.Exception
 	 */
@@ -76,11 +76,11 @@ public class ArrayBuilderTests {
 		{
 			MyObjectType[] tmp = null;
 			try {
-				 tmp = ArrayBuilder.buildArray(MyObjectType.class, TEST_SIZE);
-			} catch (InstantiationException e) {
+				tmp = ArrayBuilder.buildArray(MyObjectType.class, TEST_SIZE);
+			} catch (final InstantiationException e) {
 				e.printStackTrace();
 				fail("InstatiationException");
-			} catch (IllegalAccessException e) {
+			} catch (final IllegalAccessException e) {
 				e.printStackTrace();
 				fail("IllegalAccessException");
 			}
@@ -88,25 +88,25 @@ public class ArrayBuilderTests {
 		}
 		runBuildAssertions(array);
 	}
-	
+
 	@Test
 	public void testBuildArrayWithFactory() {
 		final MyObjectType[] array = ArrayBuilder.buildArrayWithFactory(
 				new MyObjectFactory(), TEST_SIZE);
 		runBuildAssertions(array);
 	}
-	
+
 	private <T> void runBuildAssertions(T[] array) {
 		assertEquals(TEST_SIZE, array.length);
 		for (int i = 0; i < TEST_SIZE; ++i) {
 			assertTrue(array[i] instanceof MyObjectType);
 		}
 	}
-	
+
 	public static class MyObjectType {
-		
+
 	}
-	
+
 	public static class MyObjectFactory implements Factory<MyObjectType> {
 
 		/**
@@ -124,7 +124,7 @@ public class ArrayBuilderTests {
 		public MyObjectType construct() {
 			return new MyObjectType();
 		}
-		
+
 	}
 
 }

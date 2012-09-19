@@ -37,7 +37,12 @@
  */
 package us.rothmichaels.lists;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -46,19 +51,19 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import us.rothmichaels.lists.ByteArrayList;
-
 /**
  * Unit Tests for {@link ByteArrayList}
  * 
  * @author Roth Michaels (<i><a
- *		   href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
+ *         href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
  */
 public class ByteArrayListTests {
 	static final int INITIAL_SIZE = 10;
 	static final int TEST_ADD_POINTER_LOC = 11;
 	static final int EXPANDED_INTERNAL_SIZE = 20;
-	static final byte[] TEST_ARRAY = { (byte) 0, (byte) 1, (byte) 2, (byte) 3, (byte) 4, (byte) 5, (byte) 6, (byte) 7, (byte) 8, (byte) 9, (byte) 10 };
+	static final byte[] TEST_ARRAY = { (byte) 0, (byte) 1, (byte) 2, (byte) 3,
+			(byte) 4, (byte) 5, (byte) 6, (byte) 7, (byte) 8, (byte) 9,
+			(byte) 10 };
 	static final byte[] INTERNAL_TEST_ARRAY = new byte[EXPANDED_INTERNAL_SIZE];
 	static {
 		System.arraycopy(TEST_ARRAY, 0, INTERNAL_TEST_ARRAY, 0,
@@ -148,7 +153,9 @@ public class ByteArrayListTests {
 
 	@Test
 	public void insert() {
-		final byte[] testArray = { (byte) 0, (byte) 1, (byte) 23, (byte) 2, (byte) 3, (byte) 4, (byte) 5, (byte) 6, (byte) 7, (byte) 8, (byte) 9, (byte) 10 };
+		final byte[] testArray = { (byte) 0, (byte) 1, (byte) 23, (byte) 2,
+				(byte) 3, (byte) 4, (byte) 5, (byte) 6, (byte) 7, (byte) 8,
+				(byte) 9, (byte) 10 };
 		final byte[] internalTestArray = new byte[EXPANDED_INTERNAL_SIZE];
 		System.arraycopy(testArray, 0, internalTestArray, 0, testArray.length);
 
@@ -161,7 +168,8 @@ public class ByteArrayListTests {
 		assertArrayEquals("internal array", internalTestArray, testList.data);
 
 		// test output
-		assertEquals("output size", TEST_ADD_POINTER_LOC + (byte) 1, testList.size());
+		assertEquals("output size", TEST_ADD_POINTER_LOC + (byte) 1,
+				testList.size());
 		assertArrayEquals("output array", testArray, testList.toArray());
 	}
 
@@ -227,8 +235,8 @@ public class ByteArrayListTests {
 
 		assertTrue(testList.addAll(
 				1,
-				Collections.unmodifiableList(Arrays.asList(new Byte[] { (byte) 2,
-						(byte) 3, (byte) 4 }))));
+				Collections.unmodifiableList(Arrays.asList(new Byte[] {
+						(byte) 2, (byte) 3, (byte) 4 }))));
 
 		assertEquals((byte) 10, testList.data[0]);
 		assertEquals((byte) 2, testList.data[1]);
@@ -245,7 +253,7 @@ public class ByteArrayListTests {
 					-1,
 					Collections.unmodifiableList(Arrays.asList(new Byte[] {
 							(byte) 2, (byte) 3, (byte) 4 })));
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -258,7 +266,7 @@ public class ByteArrayListTests {
 					6,
 					Collections.unmodifiableList(Arrays.asList(new Byte[] {
 							(byte) 2, (byte) 3, (byte) 4 })));
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -266,9 +274,9 @@ public class ByteArrayListTests {
 
 	@Test
 	public void addAll() {
-		IPrimativeByteList byteList = new ByteArrayList();
-		byteList.addAll(Collections.unmodifiableList(Arrays
-				.asList(new Byte[] { (byte) 2, (byte) 3, (byte) 4 })));
+		final IPrimativeByteList byteList = new ByteArrayList();
+		byteList.addAll(Collections.unmodifiableList(Arrays.asList(new Byte[] {
+				(byte) 2, (byte) 3, (byte) 4 })));
 
 		testList.add((byte) 1);
 		assertTrue(testList.addAll(byteList));
@@ -281,9 +289,9 @@ public class ByteArrayListTests {
 
 	@Test
 	public void addAllAtIndex() {
-		IPrimativeByteList byteList = new ByteArrayList();
-		byteList.addAll(Collections.unmodifiableList(Arrays
-				.asList(new Byte[] { (byte) 2, (byte) 3, (byte) 4 })));
+		final IPrimativeByteList byteList = new ByteArrayList();
+		byteList.addAll(Collections.unmodifiableList(Arrays.asList(new Byte[] {
+				(byte) 2, (byte) 3, (byte) 4 })));
 
 		testList.add((byte) 10);
 		testList.add((byte) 10);
@@ -300,13 +308,13 @@ public class ByteArrayListTests {
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void addAllAtIndexBelow() {
-		IPrimativeByteList byteList = new ByteArrayList();
-		byteList.addAll(Collections.unmodifiableList(Arrays
-				.asList(new Byte[] { (byte) 2, (byte) 3, (byte) 4 })));
+		final IPrimativeByteList byteList = new ByteArrayList();
+		byteList.addAll(Collections.unmodifiableList(Arrays.asList(new Byte[] {
+				(byte) 2, (byte) 3, (byte) 4 })));
 
 		try {
 			exceptionList.addAll(-1, byteList);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -314,13 +322,13 @@ public class ByteArrayListTests {
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void addAllAtIndexAbove() {
-		IPrimativeByteList byteList = new ByteArrayList();
-		byteList.addAll(Collections.unmodifiableList(Arrays
-				.asList(new Byte[] { (byte) 2, (byte) 3, (byte) 4 })));
+		final IPrimativeByteList byteList = new ByteArrayList();
+		byteList.addAll(Collections.unmodifiableList(Arrays.asList(new Byte[] {
+				(byte) 2, (byte) 3, (byte) 4 })));
 
 		try {
 			exceptionList.addAll(6, byteList);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -347,10 +355,12 @@ public class ByteArrayListTests {
 		testList.add((byte) 5);
 
 		assertTrue("contains true", testList.containsAll(Collections
-				.unmodifiableList(Arrays.asList(new Byte[] { (byte) 3, (byte) 2, (byte) 4 }))));
+				.unmodifiableList(Arrays.asList(new Byte[] { (byte) 3,
+						(byte) 2, (byte) 4 }))));
 
 		assertFalse("contains false", testList.containsAll(Collections
-				.unmodifiableList(Arrays.asList(new Byte[] { (byte) 7, (byte) 3, (byte) 4 }))));
+				.unmodifiableList(Arrays.asList(new Byte[] { (byte) 7,
+						(byte) 3, (byte) 4 }))));
 	}
 
 	@Test
@@ -361,12 +371,12 @@ public class ByteArrayListTests {
 		testList.add((byte) 4);
 		testList.add((byte) 5);
 
-		IPrimativeByteList expectTrue = new ByteArrayList();
+		final IPrimativeByteList expectTrue = new ByteArrayList();
 		expectTrue.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Byte[] { (byte) 3, (byte) 2, (byte) 4 })));
 		assertTrue("contains true", testList.containsAll(expectTrue));
 
-		IPrimativeByteList expectFalse = new ByteArrayList();
+		final IPrimativeByteList expectFalse = new ByteArrayList();
 		expectFalse.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Byte[] { (byte) 7, (byte) 2, (byte) 4 })));
 		assertFalse("contains false", testList.containsAll(expectFalse));
@@ -387,7 +397,7 @@ public class ByteArrayListTests {
 	public void testGetBelow() {
 		try {
 			exceptionList.get(-1);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -397,7 +407,7 @@ public class ByteArrayListTests {
 	public void testGetAbove() {
 		try {
 			exceptionList.get(6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -458,7 +468,9 @@ public class ByteArrayListTests {
 		assertFalse(testList.removeValue((byte) -4));
 		assertTrue(testList.removeValue((byte) 3));
 
-		assertArrayEquals(new byte[] { (byte) 1, (byte) 2, (byte) 3, (byte) 5 }, testList.toArray());
+		assertArrayEquals(
+				new byte[] { (byte) 1, (byte) 2, (byte) 3, (byte) 5 },
+				testList.toArray());
 	}
 
 	@Test
@@ -472,14 +484,16 @@ public class ByteArrayListTests {
 		assertTrue(testList.remove(2));
 
 		assertEquals((byte) 4, testList.addPointer);
-		assertArrayEquals(new byte[] { (byte) 1, (byte) 2, (byte) 3, (byte) 5 }, testList.toArray());
+		assertArrayEquals(
+				new byte[] { (byte) 1, (byte) 2, (byte) 3, (byte) 5 },
+				testList.toArray());
 	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void testRemoveBelow() {
 		try {
 			exceptionList.remove(-1);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -489,7 +503,7 @@ public class ByteArrayListTests {
 	public void testRemoveAbove() {
 		try {
 			exceptionList.remove(6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 	}
@@ -522,7 +536,8 @@ public class ByteArrayListTests {
 		assertTrue(testList.retainAll(Collections.unmodifiableList(Arrays
 				.asList(new Byte[] { (byte) 2, (byte) 3, (byte) 4 }))));
 
-		assertArrayEquals(new byte[] { (byte) 2, (byte) 3, (byte) 4 }, testList.toArray());
+		assertArrayEquals(new byte[] { (byte) 2, (byte) 3, (byte) 4 },
+				testList.toArray());
 	}
 
 	@Test
@@ -535,15 +550,15 @@ public class ByteArrayListTests {
 
 		assertEquals((byte) 3, testList.set(2, (byte) 10));
 
-		assertArrayEquals(new byte[] { (byte) 1, (byte) 2, (byte) 10, (byte) 4, (byte) 5 },
-				testList.toArray());
+		assertArrayEquals(new byte[] { (byte) 1, (byte) 2, (byte) 10, (byte) 4,
+				(byte) 5 }, testList.toArray());
 	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void testSetBelow() {
 		try {
 			exceptionList.set(-1, (byte) 6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -553,7 +568,7 @@ public class ByteArrayListTests {
 	public void testSetAbove() {
 		try {
 			exceptionList.set(6, (byte) 100);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -567,15 +582,15 @@ public class ByteArrayListTests {
 		testList.add((byte) 4);
 		testList.add((byte) 5);
 
-		assertArrayEquals(new byte[] { (byte) 2, (byte) 3, (byte) 4 }, testList.subList(1, 4)
-				.toArray());
+		assertArrayEquals(new byte[] { (byte) 2, (byte) 3, (byte) 4 }, testList
+				.subList(1, 4).toArray());
 	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void subListBelow() {
 		try {
 			exceptionList.subList(-1, 3);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -585,7 +600,7 @@ public class ByteArrayListTests {
 	public void subListOutOfRange() {
 		try {
 			exceptionList.subList(0, 6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -595,7 +610,7 @@ public class ByteArrayListTests {
 	public void subListToLessThanFrom() {
 		try {
 			exceptionList.subList(4, 2);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 

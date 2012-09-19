@@ -37,30 +37,33 @@
  */
 package us.rothmichaels.lists;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import us.rothmichaels.lists.CharArrayList;
-
 /**
  * Unit Tests for {@link CharArrayList}
  * 
  * @author Roth Michaels (<i><a
- *		   href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
+ *         href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
  */
 public class CharArrayListTests {
 	static final int INITIAL_SIZE = 10;
 	static final int TEST_ADD_POINTER_LOC = 11;
 	static final int EXPANDED_INTERNAL_SIZE = 20;
-	static final char[] TEST_ARRAY = { (char) 0, (char) 1, (char) 2, (char) 3, (char) 4, (char) 5, (char) 6, (char) 7, (char) 8, (char) 9, (char) 10 };
+	static final char[] TEST_ARRAY = { (char) 0, (char) 1, (char) 2, (char) 3,
+			(char) 4, (char) 5, (char) 6, (char) 7, (char) 8, (char) 9,
+			(char) 10 };
 	static final char[] INTERNAL_TEST_ARRAY = new char[EXPANDED_INTERNAL_SIZE];
 	static {
 		System.arraycopy(TEST_ARRAY, 0, INTERNAL_TEST_ARRAY, 0,
@@ -150,7 +153,9 @@ public class CharArrayListTests {
 
 	@Test
 	public void insert() {
-		final char[] testArray = { (char) 0, (char) 1, (char) 23, (char) 2, (char) 3, (char) 4, (char) 5, (char) 6, (char) 7, (char) 8, (char) 9, (char) 10 };
+		final char[] testArray = { (char) 0, (char) 1, (char) 23, (char) 2,
+				(char) 3, (char) 4, (char) 5, (char) 6, (char) 7, (char) 8,
+				(char) 9, (char) 10 };
 		final char[] internalTestArray = new char[EXPANDED_INTERNAL_SIZE];
 		System.arraycopy(testArray, 0, internalTestArray, 0, testArray.length);
 
@@ -163,7 +168,8 @@ public class CharArrayListTests {
 		assertArrayEquals("internal array", internalTestArray, testList.data);
 
 		// test output
-		assertEquals("output size", TEST_ADD_POINTER_LOC + (char) 1, testList.size());
+		assertEquals("output size", TEST_ADD_POINTER_LOC + (char) 1,
+				testList.size());
 		assertArrayEquals("output array", testArray, testList.toArray());
 	}
 
@@ -229,8 +235,8 @@ public class CharArrayListTests {
 
 		assertTrue(testList.addAll(
 				1,
-				Collections.unmodifiableList(Arrays.asList(new Character[] { (char) 2,
-						(char) 3, (char) 4 }))));
+				Collections.unmodifiableList(Arrays.asList(new Character[] {
+						(char) 2, (char) 3, (char) 4 }))));
 
 		assertEquals((char) 10, testList.data[0]);
 		assertEquals((char) 2, testList.data[1]);
@@ -247,7 +253,7 @@ public class CharArrayListTests {
 					-1,
 					Collections.unmodifiableList(Arrays.asList(new Character[] {
 							(char) 2, (char) 3, (char) 4 })));
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -260,7 +266,7 @@ public class CharArrayListTests {
 					6,
 					Collections.unmodifiableList(Arrays.asList(new Character[] {
 							(char) 2, (char) 3, (char) 4 })));
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -268,7 +274,7 @@ public class CharArrayListTests {
 
 	@Test
 	public void addAll() {
-		IPrimativeCharList charList = new CharArrayList();
+		final IPrimativeCharList charList = new CharArrayList();
 		charList.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Character[] { (char) 2, (char) 3, (char) 4 })));
 
@@ -283,7 +289,7 @@ public class CharArrayListTests {
 
 	@Test
 	public void addAllAtIndex() {
-		IPrimativeCharList charList = new CharArrayList();
+		final IPrimativeCharList charList = new CharArrayList();
 		charList.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Character[] { (char) 2, (char) 3, (char) 4 })));
 
@@ -302,13 +308,13 @@ public class CharArrayListTests {
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void addAllAtIndexBelow() {
-		IPrimativeCharList charList = new CharArrayList();
+		final IPrimativeCharList charList = new CharArrayList();
 		charList.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Character[] { (char) 2, (char) 3, (char) 4 })));
 
 		try {
 			exceptionList.addAll(-1, charList);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -316,13 +322,13 @@ public class CharArrayListTests {
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void addAllAtIndexAbove() {
-		IPrimativeCharList charList = new CharArrayList();
+		final IPrimativeCharList charList = new CharArrayList();
 		charList.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Character[] { (char) 2, (char) 3, (char) 4 })));
 
 		try {
 			exceptionList.addAll(6, charList);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -349,10 +355,12 @@ public class CharArrayListTests {
 		testList.add((char) 5);
 
 		assertTrue("contains true", testList.containsAll(Collections
-				.unmodifiableList(Arrays.asList(new Character[] { (char) 3, (char) 2, (char) 4 }))));
+				.unmodifiableList(Arrays.asList(new Character[] { (char) 3,
+						(char) 2, (char) 4 }))));
 
 		assertFalse("contains false", testList.containsAll(Collections
-				.unmodifiableList(Arrays.asList(new Character[] { (char) 7, (char) 3, (char) 4 }))));
+				.unmodifiableList(Arrays.asList(new Character[] { (char) 7,
+						(char) 3, (char) 4 }))));
 	}
 
 	@Test
@@ -363,12 +371,12 @@ public class CharArrayListTests {
 		testList.add((char) 4);
 		testList.add((char) 5);
 
-		IPrimativeCharList expectTrue = new CharArrayList();
+		final IPrimativeCharList expectTrue = new CharArrayList();
 		expectTrue.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Character[] { (char) 3, (char) 2, (char) 4 })));
 		assertTrue("contains true", testList.containsAll(expectTrue));
 
-		IPrimativeCharList expectFalse = new CharArrayList();
+		final IPrimativeCharList expectFalse = new CharArrayList();
 		expectFalse.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Character[] { (char) 7, (char) 2, (char) 4 })));
 		assertFalse("contains false", testList.containsAll(expectFalse));
@@ -389,7 +397,7 @@ public class CharArrayListTests {
 	public void testGetBelow() {
 		try {
 			exceptionList.get(-1);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -399,7 +407,7 @@ public class CharArrayListTests {
 	public void testGetAbove() {
 		try {
 			exceptionList.get(6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -460,7 +468,9 @@ public class CharArrayListTests {
 		assertFalse(testList.removeValue((char) -4));
 		assertTrue(testList.removeValue((char) 3));
 
-		assertArrayEquals(new char[] { (char) 1, (char) 2, (char) 3, (char) 5 }, testList.toArray());
+		assertArrayEquals(
+				new char[] { (char) 1, (char) 2, (char) 3, (char) 5 },
+				testList.toArray());
 	}
 
 	@Test
@@ -474,14 +484,16 @@ public class CharArrayListTests {
 		assertTrue(testList.remove(2));
 
 		assertEquals((char) 4, testList.addPointer);
-		assertArrayEquals(new char[] { (char) 1, (char) 2, (char) 3, (char) 5 }, testList.toArray());
+		assertArrayEquals(
+				new char[] { (char) 1, (char) 2, (char) 3, (char) 5 },
+				testList.toArray());
 	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void testRemoveBelow() {
 		try {
 			exceptionList.remove(-1);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -491,7 +503,7 @@ public class CharArrayListTests {
 	public void testRemoveAbove() {
 		try {
 			exceptionList.remove(6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 	}
@@ -524,7 +536,8 @@ public class CharArrayListTests {
 		assertTrue(testList.retainAll(Collections.unmodifiableList(Arrays
 				.asList(new Character[] { (char) 2, (char) 3, (char) 4 }))));
 
-		assertArrayEquals(new char[] { (char) 2, (char) 3, (char) 4 }, testList.toArray());
+		assertArrayEquals(new char[] { (char) 2, (char) 3, (char) 4 },
+				testList.toArray());
 	}
 
 	@Test
@@ -537,15 +550,15 @@ public class CharArrayListTests {
 
 		assertEquals((char) 3, testList.set(2, (char) 10));
 
-		assertArrayEquals(new char[] { (char) 1, (char) 2, (char) 10, (char) 4, (char) 5 },
-				testList.toArray());
+		assertArrayEquals(new char[] { (char) 1, (char) 2, (char) 10, (char) 4,
+				(char) 5 }, testList.toArray());
 	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void testSetBelow() {
 		try {
 			exceptionList.set(-1, (char) 6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -555,7 +568,7 @@ public class CharArrayListTests {
 	public void testSetAbove() {
 		try {
 			exceptionList.set(6, (char) 100);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -569,15 +582,15 @@ public class CharArrayListTests {
 		testList.add((char) 4);
 		testList.add((char) 5);
 
-		assertArrayEquals(new char[] { (char) 2, (char) 3, (char) 4 }, testList.subList(1, 4)
-				.toArray());
+		assertArrayEquals(new char[] { (char) 2, (char) 3, (char) 4 }, testList
+				.subList(1, 4).toArray());
 	}
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void subListBelow() {
 		try {
 			exceptionList.subList(-1, 3);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -587,7 +600,7 @@ public class CharArrayListTests {
 	public void subListOutOfRange() {
 		try {
 			exceptionList.subList(0, 6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -597,7 +610,7 @@ public class CharArrayListTests {
 	public void subListToLessThanFrom() {
 		try {
 			exceptionList.subList(4, 2);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 

@@ -37,7 +37,12 @@
  */
 package us.rothmichaels.lists;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -45,8 +50,6 @@ import java.util.Collections;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import us.rothmichaels.lists.FloatArrayList;
 
 /**
  * Unit Tests for {@link FloatArrayList}
@@ -247,7 +250,7 @@ public class FloatArrayListTests {
 					-1,
 					Collections.unmodifiableList(Arrays.asList(new Float[] {
 							2f, 3f, 4f })));
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -260,7 +263,7 @@ public class FloatArrayListTests {
 					6,
 					Collections.unmodifiableList(Arrays.asList(new Float[] {
 							2f, 3f, 4f })));
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -268,7 +271,7 @@ public class FloatArrayListTests {
 
 	@Test
 	public void addAll() {
-		IPrimativeFloatList floatList = new FloatArrayList();
+		final IPrimativeFloatList floatList = new FloatArrayList();
 		floatList.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Float[] { 2f, 3f, 4f })));
 
@@ -283,7 +286,7 @@ public class FloatArrayListTests {
 
 	@Test
 	public void addAllAtIndex() {
-		IPrimativeFloatList floatList = new FloatArrayList();
+		final IPrimativeFloatList floatList = new FloatArrayList();
 		floatList.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Float[] { 2f, 3f, 4f })));
 
@@ -302,13 +305,13 @@ public class FloatArrayListTests {
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void addAllAtIndexBelow() {
-		IPrimativeFloatList floatList = new FloatArrayList();
+		final IPrimativeFloatList floatList = new FloatArrayList();
 		floatList.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Float[] { 2f, 3f, 4f })));
 
 		try {
 			exceptionList.addAll(-1, floatList);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -316,13 +319,13 @@ public class FloatArrayListTests {
 
 	@Test(expected = IndexOutOfBoundsException.class)
 	public void addAllAtIndexAbove() {
-		IPrimativeFloatList floatList = new FloatArrayList();
+		final IPrimativeFloatList floatList = new FloatArrayList();
 		floatList.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Float[] { 2f, 3f, 4f })));
 
 		try {
 			exceptionList.addAll(6, floatList);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -363,12 +366,12 @@ public class FloatArrayListTests {
 		testList.add(4f);
 		testList.add(5f);
 
-		IPrimativeFloatList expectTrue = new FloatArrayList();
+		final IPrimativeFloatList expectTrue = new FloatArrayList();
 		expectTrue.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Float[] { 3f, 2f, 4f })));
 		assertTrue("contains true", testList.containsAll(expectTrue));
 
-		IPrimativeFloatList expectFalse = new FloatArrayList();
+		final IPrimativeFloatList expectFalse = new FloatArrayList();
 		expectFalse.addAll(Collections.unmodifiableList(Arrays
 				.asList(new Float[] { 7f, 2f, 4f })));
 		assertFalse("contains false", testList.containsAll(expectFalse));
@@ -389,7 +392,7 @@ public class FloatArrayListTests {
 	public void testGetBelow() {
 		try {
 			exceptionList.get(-1);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -399,7 +402,7 @@ public class FloatArrayListTests {
 	public void testGetAbove() {
 		try {
 			exceptionList.get(6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -483,7 +486,7 @@ public class FloatArrayListTests {
 	public void testRemoveBelow() {
 		try {
 			exceptionList.remove(-1);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -493,7 +496,7 @@ public class FloatArrayListTests {
 	public void testRemoveAbove() {
 		try {
 			exceptionList.remove(6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 	}
@@ -547,7 +550,7 @@ public class FloatArrayListTests {
 	public void testSetBelow() {
 		try {
 			exceptionList.set(-1, 6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -557,7 +560,7 @@ public class FloatArrayListTests {
 	public void testSetAbove() {
 		try {
 			exceptionList.set(100, 6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -579,7 +582,7 @@ public class FloatArrayListTests {
 	public void subListBelow() {
 		try {
 			exceptionList.subList(-1, 3);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -589,7 +592,7 @@ public class FloatArrayListTests {
 	public void subListOutOfRange() {
 		try {
 			exceptionList.subList(0, 6);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 
@@ -599,7 +602,7 @@ public class FloatArrayListTests {
 	public void subListToLessThanFrom() {
 		try {
 			exceptionList.subList(4, 2);
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (final ArrayIndexOutOfBoundsException e) {
 			fail(e.toString());
 		}
 

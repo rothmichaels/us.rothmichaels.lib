@@ -41,11 +41,12 @@ import java.util.EnumMap;
 import java.util.Map;
 
 /**
- * An {@link java.util.EnumMap} that has a convenience method 
+ * An {@link java.util.EnumMap} that has a convenience method
  * {@link EasyEnumMap#p(Enum, Object)} to help creating maps.
- *
- * @author Roth Michaels (<i><a href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
- *
+ * 
+ * @author Roth Michaels (<i><a
+ *         href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
+ * 
  */
 public class EasyEnumMap<K extends Enum<K>, V> extends EnumMap<K, V> {
 	private static final long serialVersionUID = 1L;
@@ -72,17 +73,18 @@ public class EasyEnumMap<K extends Enum<K>, V> extends EnumMap<K, V> {
 	}
 
 	/**
-	 * Puts a value in the map and returns itself to 
-	 * simplify map creation.
+	 * Puts a value in the map and returns itself to simplify map creation.
 	 * 
-	 * @param key key to set
-	 * @param value the value
+	 * @param key
+	 *            key to set
+	 * @param value
+	 *            the value
 	 * 
 	 * @return itself
 	 */
 	public EasyEnumMap<K, V> p(K key, V value) {
 		put(key, value);
-		
+
 		return this;
 	}
 }

@@ -46,13 +46,14 @@ import java.util.WeakHashMap;
 
 /**
  * A Set where items are held by weak reference.
- *
- * @author Roth Michaels (<i><a href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
- *
+ * 
+ * @author Roth Michaels (<i><a
+ *         href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
+ * 
  */
 public class WeakHashSet<E> implements Set<E> {
 
-	private final WeakHashMap<E,WeakReference<E>> itsMap;
+	private final WeakHashMap<E, WeakReference<E>> itsMap;
 
 	/**
 	 * Create a {@code WeakHashSet}
@@ -60,7 +61,7 @@ public class WeakHashSet<E> implements Set<E> {
 	public WeakHashSet() {
 		itsMap = new WeakHashMap<E, WeakReference<E>>();
 	}
-	
+
 	/**
 	 * @see java.util.Set#add(java.lang.Object)
 	 */
@@ -80,7 +81,7 @@ public class WeakHashSet<E> implements Set<E> {
 	@Override
 	public boolean addAll(Collection<? extends E> arg0) {
 		boolean r = false;
-		for (E item : arg0) {
+		for (final E item : arg0) {
 			if (!itsMap.containsKey(item)) {
 				itsMap.put(item, new WeakReference<E>(item));
 				r = true;
@@ -110,7 +111,7 @@ public class WeakHashSet<E> implements Set<E> {
 	 */
 	@Override
 	public boolean containsAll(Collection<?> arg0) {
-		for (Object item : arg0) {
+		for (final Object item : arg0) {
 			if (!itsMap.containsKey(arg0)) {
 				return false;
 			}
@@ -133,9 +134,9 @@ public class WeakHashSet<E> implements Set<E> {
 	public Iterator<E> iterator() {
 		return new Iterator<E>() {
 			private final Iterator<E> iterator = itsMap.keySet().iterator();
-			
+
 			private E lastKey = null;
-			
+
 			@Override
 			public boolean hasNext() {
 				return iterator.hasNext();
@@ -143,7 +144,8 @@ public class WeakHashSet<E> implements Set<E> {
 
 			@Override
 			public E next() {
-				lastKey = iterator.next();;
+				lastKey = iterator.next();
+				;
 				return itsMap.get(lastKey).get();
 			}
 
@@ -171,11 +173,11 @@ public class WeakHashSet<E> implements Set<E> {
 	@Override
 	public boolean removeAll(Collection<?> arg0) {
 		boolean r = false;
-		
-		for (Object item : arg0) {
+
+		for (final Object item : arg0) {
 			r = remove(arg0);
 		}
-		
+
 		return r;
 	}
 
@@ -185,12 +187,12 @@ public class WeakHashSet<E> implements Set<E> {
 	@Override
 	public boolean retainAll(Collection<?> arg0) {
 		boolean r = false;
-		for (E item : itsMap.keySet()) {
+		for (final E item : itsMap.keySet()) {
 			if (!arg0.contains(item)) {
 				r = remove(item);
 			}
 		}
-		
+
 		return r;
 	}
 
@@ -207,12 +209,12 @@ public class WeakHashSet<E> implements Set<E> {
 	 */
 	@Override
 	public Object[] toArray() {
-		Object[] out = new Object[size()];
+		final Object[] out = new Object[size()];
 		int i = 0;
-		for (E item : this) {
+		for (final E item : this) {
 			out[i++] = item;
 		}
-		
+
 		return out;
 	}
 
@@ -223,16 +225,16 @@ public class WeakHashSet<E> implements Set<E> {
 	@SuppressWarnings("unchecked")
 	public <T> T[] toArray(T[] arg0) {
 		if (arg0.length < itsMap.size()) {
-			arg0 = (T[]) new Object[itsMap.size()];	
+			arg0 = (T[]) new Object[itsMap.size()];
 		} else {
 			Arrays.fill(arg0, null);
 		}
-		
+
 		int i = 0;
-		for (E item : this) {
+		for (final E item : this) {
 			arg0[i++] = (T) item;
 		}
-		
+
 		return arg0;
 	}
 

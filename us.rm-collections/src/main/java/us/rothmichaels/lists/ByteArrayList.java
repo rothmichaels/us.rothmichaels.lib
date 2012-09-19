@@ -43,9 +43,10 @@ import java.util.Collection;
 
 /**
  * An {@link java.util.ArrayList}-like structure for storing primative bytes.
- *
- * @author Roth Michaels (<i><a href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
- *
+ * 
+ * @author Roth Michaels (<i><a
+ *         href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
+ * 
  */
 public class ByteArrayList implements IPrimativeByteList {
 
@@ -62,7 +63,8 @@ public class ByteArrayList implements IPrimativeByteList {
 	/**
 	 * Create an empty ByteArrayList with arbitrary size
 	 * 
-	 * @param initialSize Initial size
+	 * @param initialSize
+	 *            Initial size
 	 */
 	public ByteArrayList(int initialSize) {
 		data = new byte[initialSize];
@@ -75,8 +77,8 @@ public class ByteArrayList implements IPrimativeByteList {
 	public boolean add(byte f) {
 		// if array is full, double the size
 		if (addPointer >= data.length) {
-			byte tmp[] = data;
-			data = new byte[tmp.length*2];
+			final byte tmp[] = data;
+			data = new byte[tmp.length * 2];
 			System.arraycopy(tmp, 0, data, 0, tmp.length);
 		}
 		data[addPointer++] = f;
@@ -92,19 +94,20 @@ public class ByteArrayList implements IPrimativeByteList {
 		if (index < addPointer) {
 			// if array is full, double the size
 			if (addPointer >= data.length) {
-				byte tmp[] = data;
-				data = new byte[tmp.length*2];
+				final byte tmp[] = data;
+				data = new byte[tmp.length * 2];
 				System.arraycopy(tmp, 0, data, 0, tmp.length);
 			}
 			try {
-				System.arraycopy(data, index, data, index+1, addPointer-index);
+				System.arraycopy(data, index, data, index + 1, addPointer
+						- index);
 				data[index] = f;
 				++addPointer;
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 	}
 
@@ -130,7 +133,7 @@ public class ByteArrayList implements IPrimativeByteList {
 	 */
 	@Override
 	public final byte[] toArray() {
-		byte out[] = new byte[addPointer];
+		final byte out[] = new byte[addPointer];
 		System.arraycopy(data, 0, out, 0, addPointer);
 		return out;
 	}
@@ -140,23 +143,24 @@ public class ByteArrayList implements IPrimativeByteList {
 	 */
 	@Override
 	public boolean addAll(Collection<Byte> c) {
-		for (Byte f : c) {
+		for (final Byte f : c) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeByteList#addAll(int, java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeByteList#addAll(int,
+	 *      java.util.Collection)
 	 */
 	@Override
 	public boolean addAll(int index, Collection<Byte> c) {
 		if (index < addPointer) {
-			for (byte value : c) {
+			for (final byte value : c) {
 				add(index++, value);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -167,25 +171,26 @@ public class ByteArrayList implements IPrimativeByteList {
 	 */
 	@Override
 	public boolean addAll(IPrimativeByteList l) {
-		byte[] a = l.toArray();
-		for (byte f : a) {
+		final byte[] a = l.toArray();
+		for (final byte f : a) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeByteList#addAll(int, us.rothmichaels.lists.IPrimativeByteList)
+	 * @see us.rothmichaels.lists.IPrimativeByteList#addAll(int,
+	 *      us.rothmichaels.lists.IPrimativeByteList)
 	 */
 	@Override
 	public boolean addAll(int index, IPrimativeByteList l) {
 		if (index < addPointer) {
-			byte[] a = l.toArray();
-			for (byte value : a) {
+			final byte[] a = l.toArray();
+			for (final byte value : a) {
 				add(index++, value);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -198,7 +203,7 @@ public class ByteArrayList implements IPrimativeByteList {
 	public boolean contains(byte value) {
 		boolean r = false;
 
-		for (byte val : data) {
+		for (final byte val : data) {
 			r |= (val == value);
 		}
 
@@ -210,9 +215,9 @@ public class ByteArrayList implements IPrimativeByteList {
 	 */
 	@Override
 	public boolean containsAll(Collection<Byte> c) {
-		for (byte value : c) {
+		for (final byte value : c) {
 			boolean b = false;
-			for (byte val : data) {
+			for (final byte val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -228,11 +233,11 @@ public class ByteArrayList implements IPrimativeByteList {
 	 */
 	@Override
 	public boolean containsAll(IPrimativeByteList c) {
-		byte[] a = c.toArray();
+		final byte[] a = c.toArray();
 
-		for (byte value : a) {
+		for (final byte value : a) {
 			boolean b = false;
-			for (byte val : data) {
+			for (final byte val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -250,19 +255,20 @@ public class ByteArrayList implements IPrimativeByteList {
 	public byte get(int index) {
 		if (index < addPointer) {
 			try {
-				return data[index];				
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+				return data[index];
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 	}
 
 	/**
 	 * @see us.rothmichaels.lists.IPrimativeByteList#indexOf(byte)
-	 * @throws IllegalArgumentException if input does not exist in list
+	 * @throws IllegalArgumentException
+	 *             if input does not exist in list
 	 */
 	@Override
 	public int indexOf(byte i) throws IllegalArgumentException {
@@ -285,11 +291,12 @@ public class ByteArrayList implements IPrimativeByteList {
 
 	/**
 	 * @see us.rothmichaels.lists.IPrimativeByteList#lastIndexOf(byte)
-	 * @throws IllegalArgumentException if input does not exist in list
+	 * @throws IllegalArgumentException
+	 *             if input does not exist in list
 	 */
 	@Override
 	public int lastIndexOf(byte value) throws IllegalArgumentException {
-		for (int j = data.length-1; j >= 0 ; --j) {
+		for (int j = data.length - 1; j >= 0; --j) {
 			if (data[j] == value) {
 				return j;
 			}
@@ -319,13 +326,14 @@ public class ByteArrayList implements IPrimativeByteList {
 	public boolean remove(int index) {
 		if (index < addPointer) {
 			try {
-				System.arraycopy(data, index+1, data, index, addPointer-index);
+				System.arraycopy(data, index + 1, data, index, addPointer
+						- index);
 				--addPointer;
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -337,7 +345,7 @@ public class ByteArrayList implements IPrimativeByteList {
 	@Override
 	public boolean removeAll(Collection<Byte> c) {
 		boolean r = false;
-		for (byte value : c) {
+		for (final byte value : c) {
 			r |= removeValue(value);
 		}
 
@@ -365,16 +373,16 @@ public class ByteArrayList implements IPrimativeByteList {
 	public byte set(int index, byte element) {
 		if (index < addPointer) {
 			try {
-				byte old = data[index];
+				final byte old = data[index];
 				data[index] = element;
 
 				return old; // RETURN
 
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 	}
 
@@ -386,14 +394,15 @@ public class ByteArrayList implements IPrimativeByteList {
 		if (toIndex > addPointer || toIndex < fromIndex) {
 			throw new IndexOutOfBoundsException();
 		}
-		final int newSize = toIndex - fromIndex; 
+		final int newSize = toIndex - fromIndex;
 		final ByteArrayList out = new ByteArrayList();
 
 		try {
 			System.arraycopy(data, fromIndex, out.data, 0, newSize);
 			out.addPointer = newSize;
-		} catch (ArrayIndexOutOfBoundsException e) {
-			throw new IndexOutOfBoundsException(String.format("[%d %d)",fromIndex,toIndex));
+		} catch (final ArrayIndexOutOfBoundsException e) {
+			throw new IndexOutOfBoundsException(String.format("[%d %d)",
+					fromIndex, toIndex));
 		}
 
 		return out;

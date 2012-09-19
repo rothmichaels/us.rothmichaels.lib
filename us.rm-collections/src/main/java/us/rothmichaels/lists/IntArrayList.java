@@ -42,9 +42,10 @@ import java.util.Collection;
 
 /**
  * An {@link java.util.ArrayList}-like structure for storing primative ints.
- *
- * @author Roth Michaels (<i><a href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
- *
+ * 
+ * @author Roth Michaels (<i><a
+ *         href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
+ * 
  */
 public class IntArrayList implements IPrimativeIntList {
 
@@ -61,7 +62,8 @@ public class IntArrayList implements IPrimativeIntList {
 	/**
 	 * Create an empty IntegerArrayList with arbitrary size
 	 * 
-	 * @param initialSize Initial size
+	 * @param initialSize
+	 *            Initial size
 	 */
 	public IntArrayList(int initialSize) {
 		data = new int[initialSize];
@@ -74,8 +76,8 @@ public class IntArrayList implements IPrimativeIntList {
 	public boolean add(int f) {
 		// if array is full, double the size
 		if (addPointer >= data.length) {
-			int tmp[] = data;
-			data = new int[tmp.length*2];
+			final int tmp[] = data;
+			data = new int[tmp.length * 2];
 			System.arraycopy(tmp, 0, data, 0, tmp.length);
 		}
 		data[addPointer++] = f;
@@ -91,19 +93,20 @@ public class IntArrayList implements IPrimativeIntList {
 		if (index < addPointer) {
 			// if array is full, double the size
 			if (addPointer >= data.length) {
-				int tmp[] = data;
-				data = new int[tmp.length*2];
+				final int tmp[] = data;
+				data = new int[tmp.length * 2];
 				System.arraycopy(tmp, 0, data, 0, tmp.length);
 			}
 			try {
-				System.arraycopy(data, index, data, index+1, addPointer-index);
+				System.arraycopy(data, index, data, index + 1, addPointer
+						- index);
 				data[index] = f;
 				++addPointer;
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 	}
 
@@ -129,7 +132,7 @@ public class IntArrayList implements IPrimativeIntList {
 	 */
 	@Override
 	public final int[] toArray() {
-		int out[] = new int[addPointer];
+		final int out[] = new int[addPointer];
 		System.arraycopy(data, 0, out, 0, addPointer);
 		return out;
 	}
@@ -139,23 +142,24 @@ public class IntArrayList implements IPrimativeIntList {
 	 */
 	@Override
 	public boolean addAll(Collection<Integer> c) {
-		for (Integer f : c) {
+		for (final Integer f : c) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntList#addAll(int, java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#addAll(int,
+	 *      java.util.Collection)
 	 */
 	@Override
 	public boolean addAll(int index, Collection<Integer> c) {
 		if (index < addPointer) {
-			for (int value : c) {
+			for (final int value : c) {
 				add(index++, value);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -166,25 +170,26 @@ public class IntArrayList implements IPrimativeIntList {
 	 */
 	@Override
 	public boolean addAll(IPrimativeIntList l) {
-		int[] a = l.toArray();
-		for (int f : a) {
+		final int[] a = l.toArray();
+		for (final int f : a) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntList#addAll(int, us.rothmichaels.lists.IPrimativeIntList)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#addAll(int,
+	 *      us.rothmichaels.lists.IPrimativeIntList)
 	 */
 	@Override
 	public boolean addAll(int index, IPrimativeIntList l) {
 		if (index < addPointer) {
-			int[] a = l.toArray();
-			for (int value : a) {
+			final int[] a = l.toArray();
+			for (final int value : a) {
 				add(index++, value);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -197,7 +202,7 @@ public class IntArrayList implements IPrimativeIntList {
 	public boolean contains(int value) {
 		boolean r = false;
 
-		for (int val : data) {
+		for (final int val : data) {
 			r |= (val == value);
 		}
 
@@ -209,9 +214,9 @@ public class IntArrayList implements IPrimativeIntList {
 	 */
 	@Override
 	public boolean containsAll(Collection<Integer> c) {
-		for (int value : c) {
+		for (final int value : c) {
 			boolean b = false;
-			for (int val : data) {
+			for (final int val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -227,11 +232,11 @@ public class IntArrayList implements IPrimativeIntList {
 	 */
 	@Override
 	public boolean containsAll(IPrimativeIntList c) {
-		int[] a = c.toArray();
+		final int[] a = c.toArray();
 
-		for (int value : a) {
+		for (final int value : a) {
 			boolean b = false;
-			for (int val : data) {
+			for (final int val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -249,19 +254,20 @@ public class IntArrayList implements IPrimativeIntList {
 	public int get(int index) {
 		if (index < addPointer) {
 			try {
-				return data[index];				
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+				return data[index];
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 	}
 
 	/**
 	 * @see us.rothmichaels.lists.IPrimativeIntList#indexOf(int)
-	 * @throws IllegalArgumentException if input does not exist in list
+	 * @throws IllegalArgumentException
+	 *             if input does not exist in list
 	 */
 	@Override
 	public int indexOf(int i) throws IllegalArgumentException {
@@ -284,11 +290,12 @@ public class IntArrayList implements IPrimativeIntList {
 
 	/**
 	 * @see us.rothmichaels.lists.IPrimativeIntList#lastIndexOf(int)
-	 * @throws IllegalArgumentException if input does not exist in list
+	 * @throws IllegalArgumentException
+	 *             if input does not exist in list
 	 */
 	@Override
 	public int lastIndexOf(int value) throws IllegalArgumentException {
-		for (int j = data.length-1; j >= 0 ; --j) {
+		for (int j = data.length - 1; j >= 0; --j) {
 			if (data[j] == value) {
 				return j;
 			}
@@ -318,13 +325,14 @@ public class IntArrayList implements IPrimativeIntList {
 	public boolean remove(int index) {
 		if (index < addPointer) {
 			try {
-				System.arraycopy(data, index+1, data, index, addPointer-index);
+				System.arraycopy(data, index + 1, data, index, addPointer
+						- index);
 				--addPointer;
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -336,7 +344,7 @@ public class IntArrayList implements IPrimativeIntList {
 	@Override
 	public boolean removeAll(Collection<Integer> c) {
 		boolean r = false;
-		for (int value : c) {
+		for (final int value : c) {
 			r |= removeValue(value);
 		}
 
@@ -364,16 +372,16 @@ public class IntArrayList implements IPrimativeIntList {
 	public int set(int index, int element) {
 		if (index < addPointer) {
 			try {
-				int old = data[index];
+				final int old = data[index];
 				data[index] = element;
 
 				return old; // RETURN
 
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 	}
 
@@ -385,14 +393,15 @@ public class IntArrayList implements IPrimativeIntList {
 		if (toIndex > addPointer || toIndex < fromIndex) {
 			throw new IndexOutOfBoundsException();
 		}
-		final int newSize = toIndex - fromIndex; 
+		final int newSize = toIndex - fromIndex;
 		final IntArrayList out = new IntArrayList();
 
 		try {
 			System.arraycopy(data, fromIndex, out.data, 0, newSize);
 			out.addPointer = newSize;
-		} catch (ArrayIndexOutOfBoundsException e) {
-			throw new IndexOutOfBoundsException(String.format("[%d %d)",fromIndex,toIndex));
+		} catch (final ArrayIndexOutOfBoundsException e) {
+			throw new IndexOutOfBoundsException(String.format("[%d %d)",
+					fromIndex, toIndex));
 		}
 
 		return out;

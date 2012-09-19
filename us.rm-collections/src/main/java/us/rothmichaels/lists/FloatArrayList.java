@@ -42,9 +42,10 @@ import java.util.Collection;
 
 /**
  * An {@link java.util.ArrayList}-like structure for storing primative floats.
- *
- * @author Roth Michaels (<i><a href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
- *
+ * 
+ * @author Roth Michaels (<i><a
+ *         href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
+ * 
  */
 public class FloatArrayList implements IPrimativeFloatList {
 
@@ -61,7 +62,8 @@ public class FloatArrayList implements IPrimativeFloatList {
 	/**
 	 * Create an empty FloatArrayList with arbitrary size
 	 * 
-	 * @param initialSize Initial size
+	 * @param initialSize
+	 *            Initial size
 	 */
 	public FloatArrayList(int initialSize) {
 		data = new float[initialSize];
@@ -74,8 +76,8 @@ public class FloatArrayList implements IPrimativeFloatList {
 	public boolean add(float f) {
 		// if array is full, float the size
 		if (addPointer >= data.length) {
-			float tmp[] = data;
-			data = new float[tmp.length*2];
+			final float tmp[] = data;
+			data = new float[tmp.length * 2];
 			System.arraycopy(tmp, 0, data, 0, tmp.length);
 		}
 		data[addPointer++] = f;
@@ -91,19 +93,20 @@ public class FloatArrayList implements IPrimativeFloatList {
 		if (index < addPointer) {
 			// if array is full, float the size
 			if (addPointer >= data.length) {
-				float tmp[] = data;
-				data = new float[tmp.length*2];
+				final float tmp[] = data;
+				data = new float[tmp.length * 2];
 				System.arraycopy(tmp, 0, data, 0, tmp.length);
 			}
 			try {
-				System.arraycopy(data, index, data, index+1, addPointer-index);
+				System.arraycopy(data, index, data, index + 1, addPointer
+						- index);
 				data[index] = f;
 				++addPointer;
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 	}
 
@@ -129,7 +132,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	 */
 	@Override
 	public final float[] toArray() {
-		float out[] = new float[addPointer];
+		final float out[] = new float[addPointer];
 		System.arraycopy(data, 0, out, 0, addPointer);
 		return out;
 	}
@@ -139,23 +142,24 @@ public class FloatArrayList implements IPrimativeFloatList {
 	 */
 	@Override
 	public boolean addAll(Collection<Float> c) {
-		for (Float f : c) {
+		for (final Float f : c) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#addAll(int, java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#addAll(int,
+	 *      java.util.Collection)
 	 */
 	@Override
 	public boolean addAll(int index, Collection<Float> c) {
 		if (index < addPointer) {
-			for (float value : c) {
+			for (final float value : c) {
 				add(index++, value);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -166,25 +170,26 @@ public class FloatArrayList implements IPrimativeFloatList {
 	 */
 	@Override
 	public boolean addAll(IPrimativeFloatList l) {
-		float[] a = l.toArray();
-		for (float f : a) {
+		final float[] a = l.toArray();
+		for (final float f : a) {
 			add(f);
 		}
 		return true;
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeFloatList#addAll(int, us.rothmichaels.lists.IPrimativeFloatList)
+	 * @see us.rothmichaels.lists.IPrimativeFloatList#addAll(int,
+	 *      us.rothmichaels.lists.IPrimativeFloatList)
 	 */
 	@Override
 	public boolean addAll(int index, IPrimativeFloatList l) {
 		if (index < addPointer) {
-			float[] a = l.toArray();
-			for (float value : a) {
+			final float[] a = l.toArray();
+			for (final float value : a) {
 				add(index++, value);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -197,7 +202,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	public boolean contains(float value) {
 		boolean r = false;
 
-		for (float val : data) {
+		for (final float val : data) {
 			r |= (val == value);
 		}
 
@@ -209,9 +214,9 @@ public class FloatArrayList implements IPrimativeFloatList {
 	 */
 	@Override
 	public boolean containsAll(Collection<Float> c) {
-		for (float value : c) {
+		for (final float value : c) {
 			boolean b = false;
-			for (float val : data) {
+			for (final float val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -227,11 +232,11 @@ public class FloatArrayList implements IPrimativeFloatList {
 	 */
 	@Override
 	public boolean containsAll(IPrimativeFloatList c) {
-		float[] a = c.toArray();
+		final float[] a = c.toArray();
 
-		for (float value : a) {
+		for (final float value : a) {
 			boolean b = false;
-			for (float val : data) {
+			for (final float val : data) {
 				b |= (val == value);
 			}
 			if (!b) {
@@ -249,19 +254,20 @@ public class FloatArrayList implements IPrimativeFloatList {
 	public float get(int index) {
 		if (index < addPointer) {
 			try {
-				return data[index];				
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+				return data[index];
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 	}
 
 	/**
 	 * @see us.rothmichaels.lists.IPrimativeFloatList#indexOf(float)
-	 * @throws IllegalArgumentException if input does not exist in list
+	 * @throws IllegalArgumentException
+	 *             if input does not exist in list
 	 */
 	@Override
 	public int indexOf(float i) throws IllegalArgumentException {
@@ -284,11 +290,12 @@ public class FloatArrayList implements IPrimativeFloatList {
 
 	/**
 	 * @see us.rothmichaels.lists.IPrimativeFloatList#lastIndexOf(float)
-	 * @throws IllegalArgumentException if input does not exist in list
+	 * @throws IllegalArgumentException
+	 *             if input does not exist in list
 	 */
 	@Override
 	public int lastIndexOf(float value) throws IllegalArgumentException {
-		for (int j = data.length-1; j >= 0 ; --j) {
+		for (int j = data.length - 1; j >= 0; --j) {
 			if (data[j] == value) {
 				return j;
 			}
@@ -318,13 +325,14 @@ public class FloatArrayList implements IPrimativeFloatList {
 	public boolean remove(int index) {
 		if (index < addPointer) {
 			try {
-				System.arraycopy(data, index+1, data, index, addPointer-index);
+				System.arraycopy(data, index + 1, data, index, addPointer
+						- index);
 				--addPointer;
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 
 		return true;
@@ -336,7 +344,7 @@ public class FloatArrayList implements IPrimativeFloatList {
 	@Override
 	public boolean removeAll(Collection<Float> c) {
 		boolean r = false;
-		for (float value : c) {
+		for (final float value : c) {
 			r |= removeValue(value);
 		}
 
@@ -364,16 +372,16 @@ public class FloatArrayList implements IPrimativeFloatList {
 	public float set(int index, float element) {
 		if (index < addPointer) {
 			try {
-				float old = data[index];
+				final float old = data[index];
 				data[index] = element;
 
 				return old; // RETURN
 
-			} catch (ArrayIndexOutOfBoundsException e) {
-				throw new IndexOutOfBoundsException(""+index);
+			} catch (final ArrayIndexOutOfBoundsException e) {
+				throw new IndexOutOfBoundsException("" + index);
 			}
 		} else {
-			throw new IndexOutOfBoundsException(""+index);
+			throw new IndexOutOfBoundsException("" + index);
 		}
 	}
 
@@ -385,14 +393,15 @@ public class FloatArrayList implements IPrimativeFloatList {
 		if (toIndex > addPointer || toIndex < fromIndex) {
 			throw new IndexOutOfBoundsException();
 		}
-		final int newSize = toIndex - fromIndex; 
+		final int newSize = toIndex - fromIndex;
 		final FloatArrayList out = new FloatArrayList();
 
 		try {
 			System.arraycopy(data, fromIndex, out.data, 0, newSize);
 			out.addPointer = newSize;
-		} catch (ArrayIndexOutOfBoundsException e) {
-			throw new IndexOutOfBoundsException(String.format("[%d %d)",fromIndex,toIndex));
+		} catch (final ArrayIndexOutOfBoundsException e) {
+			throw new IndexOutOfBoundsException(String.format("[%d %d)",
+					fromIndex, toIndex));
 		}
 
 		return out;
