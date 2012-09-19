@@ -12,6 +12,19 @@
   <description>General Java library used by us.rothmichaels projects.</description>
   <packaging>pom</packaging>
 
+  <properties>
+    <p.git.repo>us.rothmichaels.lib</p.git.repo>
+  </properties>
+
+  <scm>
+    <connection>scm:git:git://git@github.com/rothmichaels/${p.git.repo}.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/rothmichaels/${p.git.repo}.git</developerConnection>
+    <url>http://github.com/rothmichaels/${p.git.repo}</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <url>http://github.com/rothmichaels/${p.git.repo}</url>
+
   <modules>
     <module>us.rm-reflect</module>
     <module>us.rm-util</module>
