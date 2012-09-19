@@ -68,7 +68,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#add(int)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#add(int)
 	 */
 	@Override
 	public boolean add(int f) {
@@ -84,7 +84,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#add(int, int)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#add(int, int)
 	 */
 	@Override
 	public void add(int index, int f) {
@@ -108,7 +108,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#size()
+	 * @see us.rothmichaels.lists.IPrimativeIntList#size()
 	 */
 	@Override
 	public int size() {
@@ -116,7 +116,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#clear()
+	 * @see us.rothmichaels.lists.IPrimativeIntList#clear()
 	 */
 	@Override
 	public void clear() {
@@ -125,7 +125,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#toArray()
+	 * @see us.rothmichaels.lists.IPrimativeIntList#toArray()
 	 */
 	@Override
 	public final int[] toArray() {
@@ -135,7 +135,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#addAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#addAll(java.util.Collection)
 	 */
 	@Override
 	public boolean addAll(Collection<Integer> c) {
@@ -146,7 +146,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#addAll(int, java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#addAll(int, java.util.Collection)
 	 */
 	@Override
 	public boolean addAll(int index, Collection<Integer> c) {
@@ -162,7 +162,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#addAll(us.rothmichaels.lists.IPrimativeIntegerList)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#addAll(us.rothmichaels.lists.IPrimativeIntList)
 	 */
 	@Override
 	public boolean addAll(IPrimativeIntList l) {
@@ -174,7 +174,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#addAll(int, us.rothmichaels.lists.IPrimativeIntegerList)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#addAll(int, us.rothmichaels.lists.IPrimativeIntList)
 	 */
 	@Override
 	public boolean addAll(int index, IPrimativeIntList l) {
@@ -191,7 +191,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#contains(int)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#contains(int)
 	 */
 	@Override
 	public boolean contains(int value) {
@@ -205,7 +205,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#containsAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#containsAll(java.util.Collection)
 	 */
 	@Override
 	public boolean containsAll(Collection<Integer> c) {
@@ -223,7 +223,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#containsAll(us.rothmichaels.lists.IPrimativeIntegerList)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#containsAll(us.rothmichaels.lists.IPrimativeIntList)
 	 */
 	@Override
 	public boolean containsAll(IPrimativeIntList c) {
@@ -243,7 +243,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#get(int)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#get(int)
 	 */
 	@Override
 	public int get(int index) {
@@ -260,7 +260,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#indexOf(int)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#indexOf(int)
 	 * @throws IllegalArgumentException if input does not exist in list
 	 */
 	@Override
@@ -275,7 +275,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#isEmpty()
+	 * @see us.rothmichaels.lists.IPrimativeIntList#isEmpty()
 	 */
 	@Override
 	public boolean isEmpty() {
@@ -283,7 +283,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#lastIndexOf(int)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#lastIndexOf(int)
 	 * @throws IllegalArgumentException if input does not exist in list
 	 */
 	@Override
@@ -298,7 +298,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#removeValue(int)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#removeValue(int)
 	 */
 	@Override
 	public boolean removeValue(int value) {
@@ -312,7 +312,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#remove(int)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#remove(int)
 	 */
 	@Override
 	public boolean remove(int index) {
@@ -331,7 +331,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#removeAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#removeAll(java.util.Collection)
 	 */
 	@Override
 	public boolean removeAll(Collection<Integer> c) {
@@ -344,7 +344,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#retainAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#retainAll(java.util.Collection)
 	 */
 	@Override
 	public boolean retainAll(Collection<Integer> c) {
@@ -358,7 +358,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#set(int, int)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#set(int, int)
 	 */
 	@Override
 	public int set(int index, int element) {
@@ -378,7 +378,7 @@ public class IntArrayList implements IPrimativeIntList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeIntegerList#subList(int, int)
+	 * @see us.rothmichaels.lists.IPrimativeIntList#subList(int, int)
 	 */
 	@Override
 	public IPrimativeIntList subList(int fromIndex, int toIndex) {

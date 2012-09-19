@@ -68,7 +68,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#add(char)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#add(char)
 	 */
 	@Override
 	public boolean add(char f) {
@@ -84,7 +84,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#add(int, char)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#add(int, char)
 	 */
 	@Override
 	public void add(int index, char f) {
@@ -108,7 +108,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#size()
+	 * @see us.rothmichaels.lists.IPrimativeCharList#size()
 	 */
 	@Override
 	public int size() {
@@ -116,7 +116,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#clear()
+	 * @see us.rothmichaels.lists.IPrimativeCharList#clear()
 	 */
 	@Override
 	public void clear() {
@@ -125,7 +125,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#toArray()
+	 * @see us.rothmichaels.lists.IPrimativeCharList#toArray()
 	 */
 	@Override
 	public final char[] toArray() {
@@ -135,7 +135,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#addAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#addAll(java.util.Collection)
 	 */
 	@Override
 	public boolean addAll(Collection<Character> c) {
@@ -146,7 +146,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#addAll(int, java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#addAll(int, java.util.Collection)
 	 */
 	@Override
 	public boolean addAll(int index, Collection<Character> c) {
@@ -162,7 +162,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#addAll(us.rothmichaels.lists.IPrimativeCharacterList)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#addAll(us.rothmichaels.lists.IPrimativeCharList)
 	 */
 	@Override
 	public boolean addAll(IPrimativeCharList l) {
@@ -174,7 +174,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#addAll(int, us.rothmichaels.lists.IPrimativeCharacterList)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#addAll(int, us.rothmichaels.lists.IPrimativeCharList)
 	 */
 	@Override
 	public boolean addAll(int index, IPrimativeCharList l) {
@@ -191,7 +191,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#contains(char)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#contains(char)
 	 */
 	@Override
 	public boolean contains(char value) {
@@ -205,7 +205,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#containsAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#containsAll(java.util.Collection)
 	 */
 	@Override
 	public boolean containsAll(Collection<Character> c) {
@@ -223,7 +223,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#containsAll(us.rothmichaels.lists.IPrimativeCharacterList)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#containsAll(us.rothmichaels.lists.IPrimativeCharList)
 	 */
 	@Override
 	public boolean containsAll(IPrimativeCharList c) {
@@ -243,7 +243,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#get(int)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#get(int)
 	 */
 	@Override
 	public char get(int index) {
@@ -260,7 +260,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#indexOf(char)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#indexOf(char)
 	 * @throws IllegalArgumentException if input does not exist in list
 	 */
 	@Override
@@ -275,7 +275,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#isEmpty()
+	 * @see us.rothmichaels.lists.IPrimativeCharList#isEmpty()
 	 */
 	@Override
 	public boolean isEmpty() {
@@ -283,7 +283,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#lastIndexOf(char)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#lastIndexOf(char)
 	 * @throws IllegalArgumentException if input does not exist in list
 	 */
 	@Override
@@ -298,7 +298,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#removeValue(char)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#removeValue(char)
 	 */
 	@Override
 	public boolean removeValue(char value) {
@@ -312,7 +312,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#remove(int)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#remove(int)
 	 */
 	@Override
 	public boolean remove(int index) {
@@ -331,7 +331,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#removeAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#removeAll(java.util.Collection)
 	 */
 	@Override
 	public boolean removeAll(Collection<Character> c) {
@@ -344,7 +344,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#retainAll(java.util.Collection)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#retainAll(java.util.Collection)
 	 */
 	@Override
 	public boolean retainAll(Collection<Character> c) {
@@ -358,7 +358,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#set(int, char)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#set(int, char)
 	 */
 	@Override
 	public char set(int index, char element) {
@@ -378,7 +378,7 @@ public class CharArrayList implements IPrimativeCharList {
 	}
 
 	/**
-	 * @see us.rothmichaels.lists.IPrimativeCharacterList#subList(int, int)
+	 * @see us.rothmichaels.lists.IPrimativeCharList#subList(int, int)
 	 */
 	@Override
 	public IPrimativeCharList subList(int fromIndex, int toIndex) {

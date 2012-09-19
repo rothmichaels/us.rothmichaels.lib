@@ -59,9 +59,10 @@ public interface IPrimativeDoubleList {
 	boolean add(double e);
 
 	/**
+	 * Adds an emelement to the list at the specified index.
 	 * 
-	 * @param index
-	 * @param element
+	 * @param index index to insert new element
+	 * @param element element to insert
 	 */
 	void add(int index, double element);
 
@@ -88,7 +89,7 @@ public interface IPrimativeDoubleList {
 	/**
 	 * Appends the specified list to the list.
 	 *
-	 * @param c the list to append
+	 * @param l the list to append
 	 *
 	 * @return {@code true} if list was modified as a result of the call
 	 */
@@ -169,7 +170,7 @@ public interface IPrimativeDoubleList {
 	 * Returns the index of the last occurrence of the specified value
 	 * in the list.
 	 *
-	 * @param i value to search for
+	 * @param value value to search for
 	 *
 	 * @return index of last occurance of {@code i}
 	 */
@@ -194,17 +195,20 @@ public interface IPrimativeDoubleList {
 	boolean remove(int index);
 
 	/**
-	 * 
-	 * @param c
+	 * Remove the items {@code c} from the list. 
+	 *
+	 * @param c items to remove
 	 *
 	 * @return {@code true} if list was modified by this operation.
 	 */
 	boolean removeAll(Collection<Double> c);
 
 	/**
-	 * 
-	 * @param c
-	 * @return
+	 * Remove all items in the list except those contained in {@code c}
+	 *
+	 * @param c items to keep
+	 *
+	 * @return {@code true} if list was modified by this operation.
 	 */
 	boolean retainAll(Collection<Double> c);
 

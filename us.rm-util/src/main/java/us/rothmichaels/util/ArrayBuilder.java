@@ -75,22 +75,49 @@ public final class ArrayBuilder {
 		}
 		return array;
 	}
-	
-	public static <T>T[] buildArrayWithFactory(Factory<T> factory, int size) {
+
+	/**
+	 * Construct an array of type {@code T} using the supplied factory.
+	 *
+	 * @param factory factory to use to construct the array
+	 * @param size size of the array
+	 *
+	 * @return the new array
+	 */
+	public static <T> T[] buildArrayWithFactory(Factory<T> factory, int size) {
 		@SuppressWarnings("unchecked")
 		T[] array = (T[]) Array.newInstance(factory.getFactoryClass(), size);
 		for (int i = 0; i < array.length; ++i) {
-			array[i] = 	factory.construct();
+			array[i] = factory.construct();
 		}
 		return array;
 	}
-	
-	public static <T extends CloneSupported<T>>T[] buildArrayWithClones(T obj, int size) {
+
+	/**
+	 * Construct an array of cloned objects.
+	 *
+	 * @param obj the object to clone into the array
+	 * @param size size of the array
+	 *
+	 * @return the new array
+	 */
+	public static <T extends CloneSupported<T>> T[] buildArrayWithClones(T obj,
+			int size) {
 		@SuppressWarnings("unchecked")
 		T[] array = (T[]) Array.newInstance(obj.getClass(), size);
 		for (int i = 0; i < array.length; ++i) {
 			array[i] = (T) obj.clone();
 		}
 		return array;
+	}
+
+	/**
+	 * Do not instantiate this class
+	 * 
+	 * @deprecated
+	 */
+	@Deprecated
+	private ArrayBuilder() {
+		throw new AssertionError();
 	}
 }

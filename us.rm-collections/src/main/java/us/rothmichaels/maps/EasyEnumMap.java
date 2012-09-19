@@ -42,7 +42,7 @@ import java.util.Map;
 
 /**
  * An {@link java.util.EnumMap} that has a convenience method 
- * {@link EasyEnumMap#p(Enum, Object) to help creating maps.
+ * {@link EasyEnumMap#p(Enum, Object)} to help creating maps.
  *
  * @author Roth Michaels (<i><a href="mailto:roth@rothmichaels.us">roth@rothmichaels.us</a></i>)
  *

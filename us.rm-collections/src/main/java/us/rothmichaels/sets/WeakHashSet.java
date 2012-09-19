@@ -53,7 +53,10 @@ import java.util.WeakHashMap;
 public class WeakHashSet<E> implements Set<E> {
 
 	private final WeakHashMap<E,WeakReference<E>> itsMap;
-	
+
+	/**
+	 * Create a {@code WeakHashSet}
+	 */
 	public WeakHashSet() {
 		itsMap = new WeakHashMap<E, WeakReference<E>>();
 	}
@@ -213,7 +216,9 @@ public class WeakHashSet<E> implements Set<E> {
 		return out;
 	}
 
-
+	/**
+	 * @see java.util.Set#toArray(Object[])
+	 */
 	@Override
 	@SuppressWarnings("unchecked")
 	public <T> T[] toArray(T[] arg0) {
