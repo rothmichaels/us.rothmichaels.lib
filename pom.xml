@@ -7,7 +7,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>us.rothmichaels.lib</groupId>
   <artifactId>us.rm-lib</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1-SNAPSHOT</version>
   <name>us.rothmichaels Library</name>
   <description>General Java library used by us.rothmichaels projects.</description>
   <packaging>pom</packaging>
@@ -20,7 +20,7 @@
     <connection>scm:git:git://git@github.com/rothmichaels/${p.git.repo}.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/rothmichaels/${p.git.repo}.git</developerConnection>
     <url>http://github.com/rothmichaels/${p.git.repo}</url>
-    <tag>us.rm-lib-1.0.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <url>http://github.com/rothmichaels/${p.git.repo}</url>

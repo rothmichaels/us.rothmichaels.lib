@@ -3,7 +3,7 @@
   <parent>
     <groupId>us.rothmichaels.lib</groupId>
     <artifactId>us.rm-lib</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>us.rm-collections</artifactId>
   <name>us.rothmichaels Collections Library</name>
