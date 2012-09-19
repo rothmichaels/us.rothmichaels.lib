@@ -16,8 +16,8 @@ import java.util.Collection;
  */
 public class IntArrayList implements IPrimativeIntList {
 
-	protected int data[];
-	protected int addPointer;
+	int data[];
+	int addPointer;
 
 	/**
 	 * Create an empty IntegerArrayList with size 10.

@@ -16,8 +16,8 @@ import java.util.Collection;
  */
 public class CharArrayList implements IPrimativeCharList {
 
-	protected char data[];
-	protected int addPointer;
+	char data[];
+	int addPointer;
 
 	/**
 	 * Create an empty CharacterArrayList with size 10.

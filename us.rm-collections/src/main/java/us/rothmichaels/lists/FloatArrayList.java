@@ -16,8 +16,8 @@ import java.util.Collection;
  */
 public class FloatArrayList implements IPrimativeFloatList {
 
-	protected float data[];
-	protected int addPointer;
+	float data[];
+	int addPointer;
 
 	/**
 	 * Create an empty FloatArrayList with size 10.

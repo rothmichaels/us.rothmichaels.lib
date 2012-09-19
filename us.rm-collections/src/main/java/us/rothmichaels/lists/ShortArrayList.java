@@ -16,8 +16,8 @@ import java.util.Collection;
  */
 public class ShortArrayList implements IPrimativeShortList {
 
-	protected short data[];
-	protected int addPointer;
+	short data[];
+	int addPointer;
 
 	/**
 	 * Create an empty ShortArrayList with size 10.

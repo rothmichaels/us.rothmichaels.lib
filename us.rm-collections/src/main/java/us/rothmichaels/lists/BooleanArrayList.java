@@ -16,8 +16,8 @@ import java.util.Collection;
  */
 public class BooleanArrayList implements IPrimativeBooleanList {
 
-	protected boolean data[];
-	protected int addPointer;
+	boolean data[];
+	int addPointer;
 
 	/**
 	 * Create an empty BooleanArrayList with size 10.

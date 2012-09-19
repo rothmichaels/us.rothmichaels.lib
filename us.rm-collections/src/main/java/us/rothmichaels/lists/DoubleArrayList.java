@@ -16,8 +16,8 @@ import java.util.Collection;
  */
 public class DoubleArrayList implements IPrimativeDoubleList {
 
-	protected double data[];
-	protected int addPointer;
+	double data[];
+	int addPointer;
 
 	/**
 	 * Create an empty DoubleArrayList with size 10.

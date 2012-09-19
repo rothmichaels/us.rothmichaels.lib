@@ -16,8 +16,8 @@ import java.util.Collection;
  */
 public class LongArrayList implements IPrimativeLongList {
 
-	protected long data[];
-	protected int addPointer;
+	long data[];
+	int addPointer;
 
 	/**
 	 * Create an empty LongArrayList with size 10.

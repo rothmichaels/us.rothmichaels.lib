@@ -16,8 +16,8 @@ import java.util.Collection;
  */
 public class ByteArrayList implements IPrimativeByteList {
 
-	protected byte data[];
-	protected int addPointer;
+	byte data[];
+	int addPointer;
 
 	/**
 	 * Create an empty ByteArrayList with size 10.
